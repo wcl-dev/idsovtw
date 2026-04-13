@@ -1,0 +1,111 @@
+# 原住民族委員會開放資料平台
+# 對照：data-source-inventory.md §1；audit-log.md §1
+
+id: cip
+name_zh: 原住民族委員會開放資料平台
+name_en: Council of Indigenous Peoples Open Data Platform
+url_primary: https://data.cip.gov.tw/
+
+governing_agency:
+  name_zh: 原住民族委員會
+  name_en: Council of Indigenous Peoples
+  operating_unit: null
+  legal_basis: null
+
+data_nature: 行政統計
+
+# 2026-04-12 決議：資料單位僅標「行政區」。
+# 253 筆資料集中絕大多數以行政區為單位；少數主題型資料集（部落 GIS 點位表、核定部落清冊）
+# 因主題需要而以部落為記錄單位，但此為例外而非平台的基本資料單位。
+data_unit:
+  - 行政區
+
+themes:
+  - 民族人口
+  - 原民鄉鎮
+  - 原民法規
+  - 原民部落
+  - 歲時祭儀放假日
+  - 文學
+  - 音樂
+  - 藝術
+  - 學校課程
+  - 學生社團
+  - 圖書資訊
+  - 語言教育
+  - 就學狀況
+  - 社團
+  - 公司行號
+  - 通訊錄
+  - 社會補助
+  - 職業勞動
+  - 就業狀況
+  - 經濟狀況
+  - 會計月報
+  - 決算
+  - 預算
+  - 其他
+
+dataset_count: 253
+
+formats:
+  - CSV
+  - JSON
+  - XML
+
+access:
+  direct_download: true
+  api:
+    exists: true
+    usable: true
+    endpoint: https://data.cip.gov.tw/API/v1/dump/datastore/
+    auth_required: false
+    auth_barriers: []
+    notes: 每筆資料集 ID 格式為 A53000000A-{funno}-{format_code}（001=JSON、002=XML、003=CSV）；免認證直接下載
+  browse_available: true
+  application_required: false
+  login_required: false
+
+# 2026-04-12 實測 /Home/Copyright.aspx 後修正：CIP 採用獨立授權（非通用政府資料開放授權條款）。
+# 授權文字明確提及原住民族權益與傳統智慧創作專用權（見 notes）。
+# collective_rights=localized：有在地化的集體權利條款，但未對接 CARE/OCAP/TK Labels 國際框架。
+license:
+  type: 原住民族委員會開放資料使用規範
+  version: "1.0"
+  free_reuse: true
+  collective_rights: localized
+  mixed: false
+  url: https://data.cip.gov.tw/Home/Copyright.aspx
+  notes: |
+    非通用「政府資料開放授權條款」，為 CIP 獨立制定之使用規範。特有條款包括：
+    (1) 要求利用者「尊重原住民族權益，不妨礙或侵害原住民族之生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」；
+    (2) 原住民族傳統智慧創作專用權被列為授權不及於的保留範圍；
+    (3) 若未來智慧創作專用權人主張權利，利用者同意不得對原民會或資料提供人請求賠償。
+    這些是台灣在地化的集體權利語句，但未對接 CARE/OCAP/TK Labels 國際框架。
+
+update_frequency: 依資料集而異
+
+audit:
+  last_checked: "2026-04-12"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L21-L70
+  inventory_ref: data-source-inventory.md:L20-L42
+
+critical_gaps:
+  - 大多數資料以行政區為單位，部落層級資料僅存在於少數主題型清冊（GIS 點位表、核定部落清冊等）
+  - 平台架構為 ASP.NET WebForms，分類選單使用 __doPostBack JavaScript postback，不利程式化瀏覽
+  - 授權條款雖有原住民族權益敏感語句，但未採用 CARE/OCAP/TK Labels 等國際治理框架
+  - 首頁導覽連結使用圖片而非文字，降低自動化盤點工具的可用性
+
+# 2026-04-12 實測三筆資料集，驗證並更新 significance 描述。
+notable_datasets:
+  - title: 原住民族部落位置GIS點位表
+    identifier: funno=111027
+    significance: 739 筆部落的精確地理座標（X/Y 座標與 WGS84 經緯度）、行政區歸屬、族別、部落傳統族語名稱（羅馬拼音）。是全平台中最完整的部落空間對應資料。
+  - title: 核定部落結果
+    identifier: funno=112041
+    significance: 746 個官方核定部落清冊，含核定民國年份、族語名稱、族名、行政區對應，但無地理座標（與 111027 互補：有名稱對應無座標）。
+  - title: 55個原住民族鄉鎮市區
+    identifier: funno=112039
+    significance: 55 個官方認定原住民族鄉鎮市區的清單，含縣市、鄉鎮市區代碼與各鄉鎮公所網址。為行政區層級的原住民族地理範圍定義。

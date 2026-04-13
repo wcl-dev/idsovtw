@@ -1,0 +1,98 @@
+# 政府資料開放平臺
+# 對照：data-source-inventory.md §2；audit-log.md §2
+
+id: data-gov-tw
+name_zh: 政府資料開放平臺
+name_en: Government Open Data Platform
+url_primary: https://data.gov.tw/
+
+governing_agency:
+  name_zh: 國家發展委員會
+  name_en: National Development Council
+  operating_unit: 數位發展部（2022 年後部分職能移轉）
+  legal_basis: null
+
+data_nature: 綜合平台
+
+# 跨部會彙整平台，各資料集基本單位依提供機關而異，多數為行政區層級
+data_unit:
+  - 行政區
+
+themes:
+  - 公共資訊
+  - 政府統計
+  - 政府支出
+  - 政府預算
+  - 統一代碼
+  - 性別統計
+  - 諮詢小組
+  - 依申請提供資料
+
+# 全平台總資料集數；全平台共 52,914 筆（2026-04-12 實測）
+dataset_count: 52914
+
+# 2026-04-12 實測：CSV 全量匯出後本地篩選，含「原住民」關鍵字的資料集共 833 筆
+# 其中標題含「原住民」539 筆；僅描述或其他欄位含「原住民」294 筆
+indigenous_related_count: 833
+
+formats:
+  - CSV
+  - JSON
+  - XML
+  - 其他（依資料集而異）
+
+access:
+  direct_download: true
+  api:
+    exists: true
+    # 關鍵發現：公開搜尋 API 名存實亡（query 參數被忽略，永遠回傳全部 52,914 筆）
+    # 但 CSV 全量匯出 API 可用，是唯一實際可用的程式化取得路徑
+    usable: true
+    endpoint: https://data.gov.tw/api/v2/rest/dataset/export
+    auth_required: false
+    auth_barriers: []
+    notes: |
+      平台有三層 API：
+      (1) /api/front/dataset/list — 搜尋 API，query 參數被忽略，永遠回傳全部 52,914 筆，實質不可用；
+      (2) /api/front/agency/listbytid/ — 機關查詢端點，不支援關鍵字篩選；
+      (3) /api/v2/rest/dataset/export — CSV 全量匯出（74,041 行），唯一實際可用的程式化途徑。
+      單一資料集則可透過 /dataset/{nid} 頁面取得詮釋資料（Schema.org 結構化標記）。
+  browse_available: true
+  application_required: false
+  login_required: false
+
+license:
+  type: 政府資料開放授權條款
+  version: "1.0"
+  free_reuse: true
+  collective_rights: none
+  mixed: false
+  url: https://data.gov.tw/license
+  notes: |
+    2015-07-27 訂定，與創用 CC BY 4.0 國際版本相容。
+    授權範圍：不限目的（含商業）、時間、地域、非專屬、不可撤回、免授權金。
+    課予義務：須以顯名聲明標示原資料提供機關。
+    2026-04-12 實測授權全文，**無任何原住民族相關條款**。
+
+update_frequency: 依資料集而異
+
+audit:
+  last_checked: "2026-04-12"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L74-L156
+  inventory_ref: data-source-inventory.md:L46-L69
+
+critical_gaps:
+  - 公開搜尋 API 實質不可用（query 參數被忽略），外部使用者無法程式化盤點原住民族相關資料集
+  - 原住民族相關資料的 71% 不是由原民會提供——833 筆散布於數十個中央與地方機關，缺乏跨機關的內容協調或對應關係
+  - 授權條款與原住民族集體權利完全脫節，無任何文化敏感處理條款
+  - 同一主題可能重複出現於不同機關的資料集中，但平台無揭露這些重疊或對應關係
+
+notable_datasets:
+  - title: (API)政府資料開放平臺資料清單
+    identifier: dataset/172819
+    significance: 提供 /api/v2/rest/dataset/export CSV 匯出端點的資料集；是使用者發現此端點的入口——本身也是此專案勘查過程中的關鍵轉折（沒有這條線索就無法取得完整原住民族資料集清單）
+  - title: 原住民族相關資料集（833 筆）
+    identifier: null
+    significance: 最大宗提供機關為原民會 240 筆（29%），其餘 71% 分布於臺南市社會局 32 筆、統計處 25 筆、臺南市民政局 24 筆、臺中市原民會 21 筆、臺北市原民會 19 筆、行政院主計總處 16 筆、臺中市教育局 14 筆等數十個機關

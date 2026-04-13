@@ -1,0 +1,102 @@
+# TICD 台灣原住民族部落開放資料庫（託管於 OSF）
+# 對照：data-source-inventory.md §3（以 TICD 為主要敘述對象）；audit-log.md §3
+
+id: ticd
+name_zh: TICD 台灣原住民族部落開放資料庫
+name_en: TICD (Taiwan Indigenous Communities Open Data)
+url_primary: https://osf.io/esw67/
+
+governing_agency:
+  name_zh: 中央研究院（專案主持）
+  name_en: Academia Sinica (principal investigator)
+  operating_unit: 由個人研究者林季平（Ji-Ping Lin）主導；託管於 OSF (Open Science Framework)
+  legal_basis: |
+    原網域 ianthro.tw 已消失（DNS 不可解析），專案 2022 年起改由 OSF 託管。
+    來源計畫：原住民族委員會委託「當代台灣原住民族研究」(2013-2022)；另獲國科會多項補助
+    （MOST 106-2420-H-001-008-MY2、MOST 106-2420-H-156-001-MY2、MOST 109-2420-H-001-003、
+    MOST 109-2420-H-156-001、NSTC 112-2410-H-001-075-MY2）。
+
+data_nature: 學術調查
+
+# 2026-04-12 OSF API 實測：06_TICD 資料夾下依縣市分組（臺東/屏東/桃園/新北/新竹/苗栗/
+# 臺中/嘉義/南投/高雄 共 10 個縣市子資料夾），每個縣市底下為該縣市各部落的個別資料
+# 這是五個來源中唯一以「部落」為核心單位的結構化資料庫
+data_unit:
+  - 部落
+
+themes:
+  - 部落基礎資料
+  - 原住民部落視覺化
+  - 原住民部落高度分布圖
+  - 人口分布（TIHV）
+  - 遷徙動態（TIMD）
+  - 族群
+  - Formosan languages
+
+# OSF 專案本身含 10 個根目錄項目（1 個 ReadMe PDF、1 個論文 PDF、2 個文字網址檔、
+# 1 個 QR Code 圖、5 個資料夾）；實際部落資料筆數需進入縣市資料夾逐一計算
+dataset_count: null
+
+formats:
+  - PDF（說明文件與期刊論文）
+  - 各縣市部落資料夾（結構需進一步檢視檔案類型）
+  - 其他（OSF 支援任何檔案格式）
+
+access:
+  direct_download: true
+  api:
+    exists: true
+    usable: true
+    endpoint: https://api.osf.io/v2/nodes/esw67/
+    auth_required: false
+    auth_barriers: []
+    notes: |
+      OSF REST API v2 免認證可存取公開專案的所有詮釋資料與檔案清單。
+      Linked Components 有 3 個：iqTICD (rfe6p)、TIMD (6rpz9)、TIHV (v8zk3)。
+      DOI: 10.17605/OSF.IO/ESW67
+  browse_available: true
+  application_required: false
+  login_required: false
+
+# 2026-04-12 實測 OSF API license embed：標準 GPL 3.0 授權文字，無原住民族特定條款
+license:
+  type: GNU General Public License (GPL)
+  version: "3.0"
+  free_reuse: true
+  collective_rights: none
+  mixed: false
+  url: https://www.gnu.org/licenses/gpl-3.0.en.html
+  notes: |
+    OSF license ID: 563c1cf88c5e4a3877f9e973。授權文字為 Free Software Foundation 2007 年
+    GPL 3.0 標準版本，為通用自由軟體授權（copyleft）。
+    **與集體權利無關**——無任何原住民族特定條款。
+    node_license 屬性中 copyright_holders 為空字串。
+
+update_frequency: 依研究產出而異；OSF API 顯示最後修改日 2025-05-15
+
+audit:
+  last_checked: "2026-04-12"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L159-L189
+  inventory_ref: data-source-inventory.md:L73-L106
+
+critical_gaps:
+  - 機構失聯：原 ianthro.tw 網域已消失（DNS 不可解析）、中研院人社中心首頁無任何導向 TICD 的連結，可發現性完全取決於使用者事先知道 OSF URL
+  - 維運責任不穩：由個人研究者（林季平）主導而非機構承擔，計畫資助結束後的長期維護不可預期
+  - 採 GPL 3.0 為一般開源授權，無原住民族集體權利保障機制；以部落為核心資料單位但授權本身未對社群進行任何諮商或同意設計
+  - 資料檔案格式未標準化，各縣市資料夾結構需進一步檢視
+
+notable_datasets:
+  - title: 06_TICD_TaiwanIndigenousCommunityData 原住民族部落基礎資料
+    identifier: 634d50cd0db48e33a2e10d9b
+    significance: TICD 核心資料夾，下分 10 個縣市子資料夾（臺東、屏東、桃園、新北、新竹、苗栗、臺中、嘉義、南投、高雄），每縣市資料夾下為該縣市各部落的個別資料——直接證明 TICD 以部落為資料單位的結構化設計
+  - title: iqTICD（Linked Component）
+    identifier: rfe6p
+    significance: 綜合查詢系統（Integrated Query System），TICD 的使用者介面層
+  - title: TIMD（Linked Component）
+    identifier: 6rpz9
+    significance: 台灣原住民各族群遷徙動態資料；2025 年 Springer Nature Social Sciences 論文研究成果來源
+  - title: TIHV（Linked Component）
+    identifier: v8zk3
+    significance: 高解析度視覺化圖形資料庫（人口分布、遷徙、傳統部落）

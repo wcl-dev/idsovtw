@@ -1,0 +1,1265 @@
+{
+  "generated_at": "2026-04-13T13:44:43.651Z",
+  "meta": {
+    "source_order": [
+      "cip",
+      "data-gov-tw",
+      "ticd",
+      "ailt",
+      "tcmb"
+    ],
+    "access_max_score": 18,
+    "governance_total_cells": 14,
+    "governance_frameworks": [
+      "CARE",
+      "OCAP",
+      "TK_Labels",
+      "localized"
+    ]
+  },
+  "sources": {
+    "cip": {
+      "id": "cip",
+      "name_zh": "原住民族委員會開放資料平台",
+      "name_en": "Council of Indigenous Peoples Open Data Platform",
+      "url_primary": "https://data.cip.gov.tw/",
+      "governing_agency": {
+        "name_zh": "原住民族委員會",
+        "name_en": "Council of Indigenous Peoples",
+        "operating_unit": null,
+        "legal_basis": null
+      },
+      "data_nature": "行政統計",
+      "data_unit": [
+        "行政區"
+      ],
+      "themes": [
+        "民族人口",
+        "原民鄉鎮",
+        "原民法規",
+        "原民部落",
+        "歲時祭儀放假日",
+        "文學",
+        "音樂",
+        "藝術",
+        "學校課程",
+        "學生社團",
+        "圖書資訊",
+        "語言教育",
+        "就學狀況",
+        "社團",
+        "公司行號",
+        "通訊錄",
+        "社會補助",
+        "職業勞動",
+        "就業狀況",
+        "經濟狀況",
+        "會計月報",
+        "決算",
+        "預算",
+        "其他"
+      ],
+      "dataset_count": 253,
+      "formats": [
+        "CSV",
+        "JSON",
+        "XML"
+      ],
+      "access": {
+        "direct_download": true,
+        "api": {
+          "exists": true,
+          "usable": true,
+          "endpoint": "https://data.cip.gov.tw/API/v1/dump/datastore/",
+          "auth_required": false,
+          "auth_barriers": [],
+          "notes": "每筆資料集 ID 格式為 A53000000A-{funno}-{format_code}（001=JSON、002=XML、003=CSV）；免認證直接下載"
+        },
+        "browse_available": true,
+        "application_required": false,
+        "login_required": false
+      },
+      "license": {
+        "type": "原住民族委員會開放資料使用規範",
+        "version": "1.0",
+        "free_reuse": true,
+        "collective_rights": "localized",
+        "mixed": false,
+        "url": "https://data.cip.gov.tw/Home/Copyright.aspx",
+        "notes": "非通用「政府資料開放授權條款」，為 CIP 獨立制定之使用規範。特有條款包括：\n(1) 要求利用者「尊重原住民族權益，不妨礙或侵害原住民族之生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」；\n(2) 原住民族傳統智慧創作專用權被列為授權不及於的保留範圍；\n(3) 若未來智慧創作專用權人主張權利，利用者同意不得對原民會或資料提供人請求賠償。\n這些是台灣在地化的集體權利語句，但未對接 CARE/OCAP/TK Labels 國際框架。\n"
+      },
+      "update_frequency": "依資料集而異",
+      "audit": {
+        "last_checked": "2026-04-12",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L21-L70"
+        ],
+        "inventory_ref": "data-source-inventory.md:L20-L42"
+      },
+      "critical_gaps": [
+        "大多數資料以行政區為單位，部落層級資料僅存在於少數主題型清冊（GIS 點位表、核定部落清冊等）",
+        "平台架構為 ASP.NET WebForms，分類選單使用 __doPostBack JavaScript postback，不利程式化瀏覽",
+        "授權條款雖有原住民族權益敏感語句，但未採用 CARE/OCAP/TK Labels 等國際治理框架",
+        "首頁導覽連結使用圖片而非文字，降低自動化盤點工具的可用性"
+      ],
+      "notable_datasets": [
+        {
+          "title": "原住民族部落位置GIS點位表",
+          "identifier": "funno=111027",
+          "significance": "739 筆部落的精確地理座標（X/Y 座標與 WGS84 經緯度）、行政區歸屬、族別、部落傳統族語名稱（羅馬拼音）。是全平台中最完整的部落空間對應資料。"
+        },
+        {
+          "title": "核定部落結果",
+          "identifier": "funno=112041",
+          "significance": "746 個官方核定部落清冊，含核定民國年份、族語名稱、族名、行政區對應，但無地理座標（與 111027 互補：有名稱對應無座標）。"
+        },
+        {
+          "title": "55個原住民族鄉鎮市區",
+          "identifier": "funno=112039",
+          "significance": "55 個官方認定原住民族鄉鎮市區的清單，含縣市、鄉鎮市區代碼與各鄉鎮公所網址。為行政區層級的原住民族地理範圍定義。"
+        }
+      ]
+    },
+    "data-gov-tw": {
+      "id": "data-gov-tw",
+      "name_zh": "政府資料開放平臺",
+      "name_en": "Government Open Data Platform",
+      "url_primary": "https://data.gov.tw/",
+      "governing_agency": {
+        "name_zh": "國家發展委員會",
+        "name_en": "National Development Council",
+        "operating_unit": "數位發展部（2022 年後部分職能移轉）",
+        "legal_basis": null
+      },
+      "data_nature": "綜合平台",
+      "data_unit": [
+        "行政區"
+      ],
+      "themes": [
+        "公共資訊",
+        "政府統計",
+        "政府支出",
+        "政府預算",
+        "統一代碼",
+        "性別統計",
+        "諮詢小組",
+        "依申請提供資料"
+      ],
+      "dataset_count": 52914,
+      "indigenous_related_count": 833,
+      "formats": [
+        "CSV",
+        "JSON",
+        "XML",
+        "其他（依資料集而異）"
+      ],
+      "access": {
+        "direct_download": true,
+        "api": {
+          "exists": true,
+          "usable": true,
+          "endpoint": "https://data.gov.tw/api/v2/rest/dataset/export",
+          "auth_required": false,
+          "auth_barriers": [],
+          "notes": "平台有三層 API：\n(1) /api/front/dataset/list — 搜尋 API，query 參數被忽略，永遠回傳全部 52,914 筆，實質不可用；\n(2) /api/front/agency/listbytid/ — 機關查詢端點，不支援關鍵字篩選；\n(3) /api/v2/rest/dataset/export — CSV 全量匯出（74,041 行），唯一實際可用的程式化途徑。\n單一資料集則可透過 /dataset/{nid} 頁面取得詮釋資料（Schema.org 結構化標記）。\n"
+        },
+        "browse_available": true,
+        "application_required": false,
+        "login_required": false
+      },
+      "license": {
+        "type": "政府資料開放授權條款",
+        "version": "1.0",
+        "free_reuse": true,
+        "collective_rights": "none",
+        "mixed": false,
+        "url": "https://data.gov.tw/license",
+        "notes": "2015-07-27 訂定，與創用 CC BY 4.0 國際版本相容。\n授權範圍：不限目的（含商業）、時間、地域、非專屬、不可撤回、免授權金。\n課予義務：須以顯名聲明標示原資料提供機關。\n2026-04-12 實測授權全文，**無任何原住民族相關條款**。\n"
+      },
+      "update_frequency": "依資料集而異",
+      "audit": {
+        "last_checked": "2026-04-12",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L74-L156"
+        ],
+        "inventory_ref": "data-source-inventory.md:L46-L69"
+      },
+      "critical_gaps": [
+        "公開搜尋 API 實質不可用（query 參數被忽略），外部使用者無法程式化盤點原住民族相關資料集",
+        "原住民族相關資料的 71% 不是由原民會提供——833 筆散布於數十個中央與地方機關，缺乏跨機關的內容協調或對應關係",
+        "授權條款與原住民族集體權利完全脫節，無任何文化敏感處理條款",
+        "同一主題可能重複出現於不同機關的資料集中，但平台無揭露這些重疊或對應關係"
+      ],
+      "notable_datasets": [
+        {
+          "title": "(API)政府資料開放平臺資料清單",
+          "identifier": "dataset/172819",
+          "significance": "提供 /api/v2/rest/dataset/export CSV 匯出端點的資料集；是使用者發現此端點的入口——本身也是此專案勘查過程中的關鍵轉折（沒有這條線索就無法取得完整原住民族資料集清單）"
+        },
+        {
+          "title": "原住民族相關資料集（833 筆）",
+          "identifier": null,
+          "significance": "最大宗提供機關為原民會 240 筆（29%），其餘 71% 分布於臺南市社會局 32 筆、統計處 25 筆、臺南市民政局 24 筆、臺中市原民會 21 筆、臺北市原民會 19 筆、行政院主計總處 16 筆、臺中市教育局 14 筆等數十個機關"
+        }
+      ]
+    },
+    "ticd": {
+      "id": "ticd",
+      "name_zh": "TICD 台灣原住民族部落開放資料庫",
+      "name_en": "TICD (Taiwan Indigenous Communities Open Data)",
+      "url_primary": "https://osf.io/esw67/",
+      "governing_agency": {
+        "name_zh": "中央研究院（專案主持）",
+        "name_en": "Academia Sinica (principal investigator)",
+        "operating_unit": "由個人研究者林季平（Ji-Ping Lin）主導；託管於 OSF (Open Science Framework)",
+        "legal_basis": "原網域 ianthro.tw 已消失（DNS 不可解析），專案 2022 年起改由 OSF 託管。\n來源計畫：原住民族委員會委託「當代台灣原住民族研究」(2013-2022)；另獲國科會多項補助\n（MOST 106-2420-H-001-008-MY2、MOST 106-2420-H-156-001-MY2、MOST 109-2420-H-001-003、\nMOST 109-2420-H-156-001、NSTC 112-2410-H-001-075-MY2）。\n"
+      },
+      "data_nature": "學術調查",
+      "data_unit": [
+        "部落"
+      ],
+      "themes": [
+        "部落基礎資料",
+        "原住民部落視覺化",
+        "原住民部落高度分布圖",
+        "人口分布（TIHV）",
+        "遷徙動態（TIMD）",
+        "族群",
+        "Formosan languages"
+      ],
+      "dataset_count": null,
+      "formats": [
+        "PDF（說明文件與期刊論文）",
+        "各縣市部落資料夾（結構需進一步檢視檔案類型）",
+        "其他（OSF 支援任何檔案格式）"
+      ],
+      "access": {
+        "direct_download": true,
+        "api": {
+          "exists": true,
+          "usable": true,
+          "endpoint": "https://api.osf.io/v2/nodes/esw67/",
+          "auth_required": false,
+          "auth_barriers": [],
+          "notes": "OSF REST API v2 免認證可存取公開專案的所有詮釋資料與檔案清單。\nLinked Components 有 3 個：iqTICD (rfe6p)、TIMD (6rpz9)、TIHV (v8zk3)。\nDOI: 10.17605/OSF.IO/ESW67\n"
+        },
+        "browse_available": true,
+        "application_required": false,
+        "login_required": false
+      },
+      "license": {
+        "type": "GNU General Public License (GPL)",
+        "version": "3.0",
+        "free_reuse": true,
+        "collective_rights": "none",
+        "mixed": false,
+        "url": "https://www.gnu.org/licenses/gpl-3.0.en.html",
+        "notes": "OSF license ID: 563c1cf88c5e4a3877f9e973。授權文字為 Free Software Foundation 2007 年\nGPL 3.0 標準版本，為通用自由軟體授權（copyleft）。\n**與集體權利無關**——無任何原住民族特定條款。\nnode_license 屬性中 copyright_holders 為空字串。\n"
+      },
+      "update_frequency": "依研究產出而異；OSF API 顯示最後修改日 2025-05-15",
+      "audit": {
+        "last_checked": "2026-04-12",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L159-L189"
+        ],
+        "inventory_ref": "data-source-inventory.md:L73-L106"
+      },
+      "critical_gaps": [
+        "機構失聯：原 ianthro.tw 網域已消失（DNS 不可解析）、中研院人社中心首頁無任何導向 TICD 的連結，可發現性完全取決於使用者事先知道 OSF URL",
+        "維運責任不穩：由個人研究者（林季平）主導而非機構承擔，計畫資助結束後的長期維護不可預期",
+        "採 GPL 3.0 為一般開源授權，無原住民族集體權利保障機制；以部落為核心資料單位但授權本身未對社群進行任何諮商或同意設計",
+        "資料檔案格式未標準化，各縣市資料夾結構需進一步檢視"
+      ],
+      "notable_datasets": [
+        {
+          "title": "06_TICD_TaiwanIndigenousCommunityData 原住民族部落基礎資料",
+          "identifier": "634d50cd0db48e33a2e10d9b",
+          "significance": "TICD 核心資料夾，下分 10 個縣市子資料夾（臺東、屏東、桃園、新北、新竹、苗栗、臺中、嘉義、南投、高雄），每縣市資料夾下為該縣市各部落的個別資料——直接證明 TICD 以部落為資料單位的結構化設計"
+        },
+        {
+          "title": "iqTICD（Linked Component）",
+          "identifier": "rfe6p",
+          "significance": "綜合查詢系統（Integrated Query System），TICD 的使用者介面層"
+        },
+        {
+          "title": "TIMD（Linked Component）",
+          "identifier": "6rpz9",
+          "significance": "台灣原住民各族群遷徙動態資料；2025 年 Springer Nature Social Sciences 論文研究成果來源"
+        },
+        {
+          "title": "TIHV（Linked Component）",
+          "identifier": "v8zk3",
+          "significance": "高解析度視覺化圖形資料庫（人口分布、遷徙、傳統部落）"
+        }
+      ]
+    },
+    "ailt": {
+      "id": "ailt",
+      "name_zh": "原住民族語言資料庫",
+      "name_en": "AILT (Archive of Indigenous Languages in Taiwan)",
+      "url_primary": "https://ailt.ilrdf.org.tw/",
+      "governing_agency": {
+        "name_zh": "財團法人原住民族語言研究發展基金會",
+        "name_en": "Indigenous Languages Research and Development Foundation (ILRDF)",
+        "operating_unit": "由 ILRDF 維運；**著作權持有者為原住民族委員會**（footer 聲明「Copyright © 2022 Council of Indigenous Peoples」）",
+        "legal_basis": "依《原住民族語言發展法》第 9 條設立：「需建置原住民族語言資料庫，積極保存原住民族語料」。\n2017 年 CIP 委託原住民族語言研究發展中心規劃；2018 年第一期建置開始；2022 年（民國 111 年）完成建置。\n配合 2022-2026（民國 111-115）「國家語言整體發展方案」持續推動。\n"
+      },
+      "data_nature": "語言語料",
+      "data_unit": [
+        "語料單元"
+      ],
+      "themes": [
+        "典藏資料（未轉譯之族語原始檔案，含文本圖檔或未處理音檔）",
+        "典藏語料（經文字轉譯之口語語料或書面語料）",
+        "自然口語語料（各地語言推動人員調查）",
+        "族語新聞與節目語料",
+        "族語文學創作與族語文本",
+        "公文雙語書寫書面語料",
+        "平行語料庫（目前僅阿美語）"
+      ],
+      "dataset_count": null,
+      "formats": [
+        "影片（YouTube 嵌入）",
+        "文件影像（PDF 預覽）",
+        "圖片資源",
+        "語音資料（未確認可否下載原檔）"
+      ],
+      "access": {
+        "direct_download": false,
+        "api": {
+          "exists": false,
+          "usable": false,
+          "endpoint": null,
+          "auth_required": null,
+          "auth_barriers": [],
+          "notes": "2026-04-12 實測確認站內無任何 API 功能與下載選項"
+        },
+        "browse_available": true,
+        "application_required": false,
+        "login_required": true
+      },
+      "license": {
+        "type": "著作權保留（無明確使用授權）",
+        "version": null,
+        "free_reuse": false,
+        "collective_rights": "none",
+        "mixed": false,
+        "url": null,
+        "notes": "實質為預設著作權（All Rights Reserved），而非主動授權。Footer 唯一聲明：\n「原住民族語言研究發展基金會© 版權所有 Copyright © 2022 Council of Indigenous Peoples. All Right Reserved.」\n\n值得注意的兩個觀察：\n(1) 著作權持有者是 CIP 而非 ILRDF——理論上 CIP 的「原住民族委員會開放資料使用規範 1.0」\n    含原住民族權益條款，但 AILT 未公開採用此規範，預設仍為保留所有權利；\n(2) AILT 自己的 about 頁提到 AILLA、PARADISEC 等國際族語語料庫有「分級訪問權限制度」，\n    顯示他們知道有這類設計但未實作——這是設計缺口而非疏忽。\n"
+      },
+      "update_frequency": null,
+      "audit": {
+        "last_checked": "2026-04-12",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L192-L214"
+        ],
+        "inventory_ref": "data-source-inventory.md:L110-L134"
+      },
+      "critical_gaps": [
+        "無使用授權——全站未提供任何使用規範頁（常見路徑全部 404），僅有 footer 的「All Rights Reserved」；外部研究者無法確認可否引用、轉載、再製",
+        "語料不可下載——語料頁面無任何下載按鈕；影音以 YouTube 嵌入、文件以 PDF 預覽呈現，無原始檔案取得途徑",
+        "無 API——無任何程式化存取機制",
+        "著作權持有者錯置——CIP 是著作權人但 AILT 未採用 CIP 自己的使用規範，形同將資源置於最嚴格的預設著作權下",
+        "設計意識存在但未實作——about 頁自述 AILLA/PARADISEC 有分級訪問制度但 AILT 未實作類似機制",
+        "平行語料僅限阿美語——其餘 15 族語缺乏跨語言對照資源",
+        "詮釋資料粒度不足——每筆資源僅有標題、族群歸屬、觀看次數等；缺乏語言學標註（轉寫、語者、時地情境）"
+      ],
+      "notable_datasets": [
+        {
+          "title": "族語輸入法（支援 42 族語詞庫）",
+          "identifier": null,
+          "significance": "新上線功能；是少數可下載的 AILT 相關資源（下載的是輸入法工具而非語料）"
+        },
+        {
+          "title": "平行語料庫（僅阿美語）",
+          "identifier": null,
+          "significance": "16 族語中唯一有平行語料的；其餘 15 族語無跨語言對照資源"
+        }
+      ]
+    },
+    "tcmb": {
+      "id": "tcmb",
+      "name_zh": "國家文化記憶庫 2.0",
+      "name_en": "Taiwan Cultural Memory Bank (TCMB) 2.0",
+      "url_primary": "https://tcmb.culture.tw/",
+      "governing_agency": {
+        "name_zh": "文化部",
+        "name_en": "Ministry of Culture",
+        "operating_unit": "國立臺灣歷史博物館（維運單位，地址：臺南市安南區長和路一段 250 號；客服 02-2701-6880",
+        "legal_basis": "配合國家發展委員會「政府資料開放」政策；2022 年上線，114 年底（2025 年底）完成 2.0 改版"
+      },
+      "data_nature": "文化典藏",
+      "data_unit": [
+        "典藏物件"
+      ],
+      "themes": [
+        "人物與團體",
+        "藝術與人文",
+        "社會與政治",
+        "民俗與宗教",
+        "產業與經濟",
+        "空間、地域與遷徙",
+        "族群與語言",
+        "生物、生態與環境",
+        "其他"
+      ],
+      "dataset_count": null,
+      "indigenous_related_count": 8000,
+      "formats": [
+        "圖片",
+        "影片",
+        "聲音",
+        "文件",
+        "3D"
+      ],
+      "access": {
+        "direct_download": true,
+        "api": {
+          "exists": true,
+          "usable": true,
+          "endpoint": "https://tcmbdata.culture.tw/opendata/openapi",
+          "auth_required": true,
+          "auth_barriers": [
+            "需申請 API Key",
+            "申請須提供單位名稱",
+            "申請須提供申請原因",
+            "申請須提供固定 IP 資訊"
+          ],
+          "notes": "REST API，HTTP GET 方法，回傳 JSON。驗證碼透過 HTTP Header `Authorization` 傳遞，\n格式範例 `59c2bcfe-7a61-43d2-b9d0-a500000b0000`（GUID）。\nSwagger 文件：https://tcmbdata.culture.tw/swagger-ui/\n\n**開放範圍限制**：OpenAPI 僅涵蓋「圖像類」數位物件，不含影片、聲音、文件、3D 素材。\n回傳欄位含 imageLic 與 contentLic **兩個獨立授權欄位**——直接印證「同一物件\n的圖像授權與內容授權可能不同」的混合授權架構。\n"
+        },
+        "browse_available": true,
+        "application_required": true,
+        "login_required": null
+      },
+      "license": {
+        "type": "多重授權標示混用（10 種）",
+        "version": null,
+        "free_reuse": false,
+        "collective_rights": "none",
+        "mixed": true,
+        "url": "https://tcmb.culture.tw/zh-tw/license",
+        "notes": "TCMB 採用逐筆授權標示，共 10 種可能標示。依官方定義「開放資料」範圍：\n\n**屬於開放資料（5 種）**：\n- PDM（公眾領域標章）\n- CC0（公眾領域貢獻宣告）\n- OGDL（政府資料開放授權條款）\n- CC BY（姓名標示）\n- CC BY-SA（姓名標示─相同方式分享）\n\n**不屬於開放資料（5 種）**：\n- CC BY-NC（姓名標示─非商業性）\n- CC BY-NC-SA（姓名標示─非商業性─相同方式分享）\n- CC BY-ND（姓名標示─禁止改作）\n- CC BY-NC-ND（姓名標示─非商業性─禁止改作）\n- 僅限公開瀏覽（著作權法保護，僅限本平台公開瀏覽）\n\n**未見任何原住民族特定條款**——即使 TCMB 有「族群與語言」分類，授權體系對此類內容零關注。\nLicense 頁發布 2022-09-07，異動 2025-10-28；OpenAPI 頁異動 2026-03-27（活躍維運中）。\n"
+      },
+      "update_frequency": "持續累積；由各地方文化單位與社群貢獻；平台約每月有功能更新",
+      "audit": {
+        "last_checked": "2026-04-12",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L218-L256"
+        ],
+        "inventory_ref": "data-source-inventory.md:L138-L164"
+      },
+      "critical_gaps": [
+        "API 申請門檻高——需固定 IP，對個人研究者或非機構使用者構成實質障礙",
+        "API 開放範圍限於圖像類——影片、聲音、文件、3D 素材均不在 OpenAPI 範圍內，無程式化取得管道",
+        "混合授權架構使再利用需逐筆判斷——imageLic 與 contentLic 兩欄位可能不同，增加使用者的法律判斷負擔",
+        "授權體系對原住民族內容零關注——有「族群與語言」分類但無任何原住民族特定治理條款",
+        "SPA 架構與 URL 大小寫敏感——降低工具可發現性（如 /zh-tw/OpenApi 有效但 /zh-tw/openapi 失敗）",
+        "2.0 改版後部分舊路徑失效——如 /about、/cc_license 皆回傳 PAGE NOT FOUND，文件連結脆弱性高",
+        "原住民族相關典藏混雜——約 8,000 筆散布於九大分類中，缺乏獨立的原住民族子分類或治理標示"
+      ],
+      "notable_datasets": [
+        {
+          "title": "API places 欄位（座標與行政區）",
+          "identifier": null,
+          "significance": "OpenAPI 回傳的 places 欄位含 city、dist、address、lat、lng 座標，是五個來源中唯一可能建立地理對應的結構化欄位——但需先跨過 API Key 申請門檻"
+        },
+        {
+          "title": "「族群與語言」分類",
+          "identifier": null,
+          "significance": "九大分類之一，是 TCMB 唯一直接與原住民族議題相關的分類；但內容與治理標示均混雜於整體典藏"
+        }
+      ]
+    }
+  },
+  "governance": {
+    "schema_version": "1.0",
+    "date_checked": "2026-04-12",
+    "methodology_ref": "docs/governance-dimensions.md",
+    "sources": {
+      "cip": {
+        "checked_documents": [
+          "data/sources/cip.yaml",
+          "audit-log.md:L21-L70",
+          "data-source-inventory.md:L20-L42"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "授權文字聚焦公共利益與政府資料共享，未以原住民族集體利益為論述框架；相關原住民族條款是義務性（要求尊重），非利益性（宣稱服務）"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "無部落、族群自治組織或草根代理機構參與的治理機制；原民會作為國家設立的原住民族專責機關，其內部決策依殖民脈絡分析不構成社群控制權"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "授權有一般性免責條款但無針對原住民族社群的特別問責機制"
+            },
+            "ethics": {
+              "score": "partial",
+              "rationale": "授權中「您利用開放資料時，應尊重原住民族權益，不妨礙或侵害原住民族之生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」屬於一般性的尊重／不侵害宣告，有倫理方向但無具體執行流程（倫理委員會、審查機制等）",
+              "evidence_refs": [
+                "data/sources/cip.yaml:L78-L89",
+                "audit-log.md:L53-L70"
+              ]
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "partial",
+              "rationale": "所有權標示明確為原民會（原住民族專責政府機構），依 OCAP 定義屬「所有權明確但歸屬為機構，非社群」，歸為 partial；與實質社群所有權仍有差距",
+              "evidence_refs": [
+                "data/sources/cip.yaml:L22-L27"
+              ]
+            },
+            "control": {
+              "score": "none",
+              "rationale": "社群對日常資料處理、修改、儲存無實質控制權，僅能以一般使用者身份取用"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "所有人取用條件相同（免認證 REST API），無社群優先存取機制；技術上開放但未特別設計社群取用管道"
+            },
+            "possession": {
+              "score": "none",
+              "rationale": "資料由原民會（國家設立的原住民族專責政府機關）保管；依 OCAP Possession 的殖民脈絡分析，國家專責機關仍屬國家機構延伸，非部落／族群／自治組織持有，故不構成 partial"
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "未採用 TK 標示或等效的文化權威標示機制；資料集僅有機關層級的來源標示"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "無傳統存取規範標示（TK Seasonal、TK Culturally Sensitive 等）"
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "授權使用政府資料開放系列邏輯，非 TK 風格的使用權限標示"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "partial",
+              "rationale": "授權提及「尊重土地利用與管理模式」等涉及原基法 21 條精神的語句，但僅為尊重義務宣告，無具體諮商同意執行機制",
+              "evidence_refs": [
+                "data/sources/cip.yaml:L78-L89",
+                "audit-log.md:L53-L70"
+              ]
+            },
+            "traditional_knowledge_protection": {
+              "score": "implemented",
+              "rationale": "授權明文將「原住民族傳統智慧創作專用權」列為授權不及範圍；且規定若未來智慧創作專用權人主張權利，利用者不得對原民會或資料提供人請求賠償——精確實作傳統智慧創作保護維度",
+              "evidence_refs": [
+                "data/sources/cip.yaml:L78-L89",
+                "audit-log.md:L53-L70"
+              ]
+            },
+            "rights_respect_clause": {
+              "score": "implemented",
+              "rationale": "授權明文列舉具體應尊重的權益範圍——「生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」；精確對應「明文列舉應尊重的權益範圍」之 implemented 判準",
+              "evidence_refs": [
+                "data/sources/cip.yaml:L78-L89",
+                "audit-log.md:L53-L70"
+              ]
+            }
+          }
+        }
+      },
+      "data-gov-tw": {
+        "checked_documents": [
+          "data/sources/data-gov-tw.yaml",
+          "audit-log.md:L74-L156",
+          "data-source-inventory.md:L46-L69"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "政府資料開放授權條款以「便利民眾共享及應用政府資料」為論述；授權全文無任何原住民族特定語句"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "無原住民族對資料使用的任何控制機制"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "授權僅有一般性免責，無針對原住民族社群的問責機制"
+            },
+            "ethics": {
+              "score": "none",
+              "rationale": "授權無任何文化敏感性或倫理處理條款"
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "none",
+              "rationale": "資料由各提供機關擁有，其中原住民族相關資料集 833 筆中 71%（593 筆）來自非原住民族專責機構（臺南市社會局、統計處、臺南市民政局等）；所有權分散且主要非 Indigenous-serving"
+            },
+            "control": {
+              "score": "none",
+              "rationale": "無社群控制機制"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "對所有使用者一視同仁；但搜尋 API 名存實亡，反而對所有使用者（含社群）構成同等障礙"
+            },
+            "possession": {
+              "score": "none",
+              "rationale": "由一般政府機關（國發會、各部會、地方政府）保管；無原住民族專責機構涉入"
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "無 TK 或等效文化權威標示"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "無傳統存取規範"
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "統一使用政府資料開放授權，無 TK 風格使用權限標示"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "none",
+              "rationale": "授權無相關條款"
+            },
+            "traditional_knowledge_protection": {
+              "score": "none",
+              "rationale": "授權無原住民族傳統智慧創作保護條款"
+            },
+            "rights_respect_clause": {
+              "score": "none",
+              "rationale": "授權無原住民族權益尊重條款"
+            }
+          }
+        }
+      },
+      "ticd": {
+        "checked_documents": [
+          "data/sources/ticd.yaml",
+          "audit-log.md:L159-L189",
+          "data-source-inventory.md:L73-L106"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "GPL 3.0 為通用 copyleft 授權，無任何原住民族集體利益論述；專案標籤雖含 Indigenous peoples，但屬研究主題而非利益框架"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "GPL 的「控制權」是授予使用者重製與修改自由，與原住民族社群控制完全無關"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "GPL 的唯一義務是 copyleft（衍生作品必須同樣開放），無社群問責機制"
+            },
+            "ethics": {
+              "score": "none",
+              "rationale": "GPL 無任何倫理或文化敏感性條款"
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "none",
+              "rationale": "OSF 專案所有權在個人研究者林季平；非原住民族社群、亦非原住民族專責機構"
+            },
+            "control": {
+              "score": "none",
+              "rationale": "專案主持人有完全控制權，社群無介入機制"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "OSF 公開專案對所有人完全開放；無社群優先存取機制"
+            },
+            "possession": {
+              "score": "partial",
+              "rationale": "TICD 的持有架構是「混合」——中研院在機構伺服器保留 ticd.rchss.sinica.edu.tw 正式子域名（內容為 104 bytes 的 HTML meta refresh 檔，僅為指標無資料本體）；資料本體則保管在 OSF（Open Science Framework）開放學術平台。依 OCAP Possession 精煉定義判斷實體保管位置——資料本體在 OSF，屬「中立、獨立於國家的非政府機構」；中研院子域名僅承擔入口轉址職責不構成資料持有。故歸為 partial。此混合架構是機構層面入口責任與個人／OSF 層面內容責任的折衷，值得後續觀察若兩邊任一端失效時的穩定性意涵",
+              "evidence_refs": [
+                "data/sources/ticd.yaml:L11-L17",
+                "audit-log.md:L175-L205"
+              ]
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "無 TK 標示；僅有 OSF 標準的 contributor 標示"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "無傳統存取規範標示"
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "採 GPL 3.0，非 TK 風格使用權限"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "none",
+              "rationale": "授權與專案文件無任何涉及原基法 21 條精神的條款"
+            },
+            "traditional_knowledge_protection": {
+              "score": "none",
+              "rationale": "授權無原住民族傳統智慧創作保護條款"
+            },
+            "rights_respect_clause": {
+              "score": "none",
+              "rationale": "授權無原住民族權益尊重條款"
+            }
+          }
+        }
+      },
+      "ailt": {
+        "checked_documents": [
+          "data/sources/ailt.yaml",
+          "audit-log.md:L192-L214",
+          "data-source-inventory.md:L110-L134"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "AILT 設立宗旨聚焦「語言保存」而非「服務原住民族集體利益」；平台缺乏授權／治理文件，about 頁宗旨說明屬保存功能性論述而非利益框架"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "著作權人 CIP 與維運單位 ILRDF 皆為國家設立的原住民族專責機關；依殖民脈絡分析，國家專責機關內部決策不構成社群控制。無文件化的部落或自治組織諮詢機制"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "無問責機制"
+            },
+            "ethics": {
+              "score": "none",
+              "rationale": "無文化敏感性或倫理條款；僅有 footer 的「All Rights Reserved」"
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "partial",
+              "rationale": "著作權明確屬於原住民族委員會（CIP）——原住民族專責政府機構；依 OCAP 定義屬「所有權標示明確但歸屬為機構」之 partial",
+              "evidence_refs": [
+                "data/sources/ailt.yaml:L7-L13",
+                "audit-log.md:L207-L214"
+              ]
+            },
+            "control": {
+              "score": "none",
+              "rationale": "社群無控制權；資料由 ILRDF 維運但依著作權人（CIP）規範處理"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "線上瀏覽對所有人開放但無下載／API；有登入系統但無資料顯示社群優先存取"
+            },
+            "possession": {
+              "score": "none",
+              "rationale": "實體保管在原住民族語言研究發展基金會（ILRDF）——依《原住民族語言發展法》由政府設立的國家基金會；依 OCAP Possession 的殖民脈絡分析，國家設立的原住民族專責基金會仍屬國家延伸，不構成部落／自治組織持有"
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "無 TK 風格文化權威標示；詮釋資料僅有族群歸屬但非 TK Clan／TK Family／TK Community Voice 層級"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "無傳統存取規範標示；值得特別記錄——AILT about 頁自承國際同類資料庫（AILLA、PARADISEC）有「分級訪問權限制度」但 AILT 未實作類似機制",
+              "evidence_refs": [
+                "data/sources/ailt.yaml:L110-L118",
+                "audit-log.md:L209-L214"
+              ]
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "實質為「All Rights Reserved」預設著作權；無 TK 風格使用權限標示"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "none",
+              "rationale": "無相關機制"
+            },
+            "traditional_knowledge_protection": {
+              "score": "none",
+              "rationale": "無傳統智慧創作保護條款；諷刺的是著作權人 CIP 自己在行政資料上有此條款卻未套用於族語資料"
+            },
+            "rights_respect_clause": {
+              "score": "none",
+              "rationale": "無原住民族權益尊重條款；著作權人 CIP 自家使用規範有此條款但 AILT 未採用"
+            }
+          }
+        }
+      },
+      "tcmb": {
+        "checked_documents": [
+          "data/sources/tcmb.yaml",
+          "audit-log.md:L218-L256",
+          "data-source-inventory.md:L138-L164"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "TCMB 授權體系完整但以 CC／公眾領域／OGDL 標示為主，無原住民族集體利益論述；九大分類中「族群與語言」類別亦無特別處理"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "無原住民族控制機制；OpenAPI 需固定 IP 申請門檻反而對個人與小型社群構成障礙"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "僅有一般性爭議處理條款，無社群問責機制"
+            },
+            "ethics": {
+              "score": "none",
+              "rationale": "10 種授權標示均為技術性授權（CC／PDM／OGDL），無文化敏感性處理條款"
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "none",
+              "rationale": "素材由各典藏機關、博物館、民間機構擁有；平台明載「各機關大多以著作權法進行相關的權利註記」；所有權高度分散且絕大多數非 Indigenous-serving 機構"
+            },
+            "control": {
+              "score": "none",
+              "rationale": "無社群控制機制"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "介面支援 10 種國際語言（中英韓日泰越印馬法德）但不包含任何台灣原住民族語——精確符合「國際化多語介面但不包含族語」的 none 判準；OpenAPI 需固定 IP 申請進一步限制社群可及性"
+            },
+            "possession": {
+              "score": "none",
+              "rationale": "實體保管在國立臺灣歷史博物館——為一般文化／歷史博物館機關，非原住民族專責機構"
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "OpenAPI 有 creator、contributor 欄位但為標準後設資料標準，非 TK 風格的文化權威標示"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "無傳統存取規範標示；10 種授權標示均依國際 CC 體系而非傳統規範"
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "授權標示含 CC BY-NC（非商業）、CC BY-ND（禁改作）等有使用限制的類型，但依一般著作權授權邏輯設計，非 TK 風格的文化意義決定"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "none",
+              "rationale": "授權體系無相關條款"
+            },
+            "traditional_knowledge_protection": {
+              "score": "none",
+              "rationale": "無原住民族傳統智慧創作保護條款；即使「族群與語言」分類涉及原住民族內容亦無特別處理"
+            },
+            "rights_respect_clause": {
+              "score": "none",
+              "rationale": "無原住民族權益尊重條款"
+            }
+          }
+        }
+      }
+    },
+    "aggregates": {
+      "cip": {
+        "none": 9,
+        "partial": 3,
+        "implemented": 2,
+        "nonNone": 5,
+        "total": 14
+      },
+      "data-gov-tw": {
+        "none": 14,
+        "partial": 0,
+        "implemented": 0,
+        "nonNone": 0,
+        "total": 14
+      },
+      "ticd": {
+        "none": 13,
+        "partial": 1,
+        "implemented": 0,
+        "nonNone": 1,
+        "total": 14
+      },
+      "ailt": {
+        "none": 13,
+        "partial": 1,
+        "implemented": 0,
+        "nonNone": 1,
+        "total": 14
+      },
+      "tcmb": {
+        "none": 14,
+        "partial": 0,
+        "implemented": 0,
+        "nonNone": 0,
+        "total": 14
+      }
+    }
+  },
+  "access": {
+    "schema_version": "1.0",
+    "date_checked": "2026-04-12",
+    "methodology_ref": "docs/access-methodology.md",
+    "sources": {
+      "cip": {
+        "discoverability": {
+          "score": 3,
+          "rationale": "主站 https://data.cip.gov.tw 首頁可直接點擊「資料查詢」進入資料集列表（DataMenu.aspx）；平台首頁與導覽對一般使用者完全可見",
+          "evidence_refs": [
+            "audit-log.md:L21-L70",
+            "data/sources/cip.yaml:L7-L7"
+          ]
+        },
+        "technical_barrier": {
+          "score": 2,
+          "rationale": "每筆資料集有 REST API 下載連結（/API/v1/dump/datastore/A53000000A-{funno}-{format}），免認證直接 HTTP GET 取得 JSON/CSV/XML；雖然 DataMenu.aspx 使用 __doPostBack 使批次瀏覽需 Playwright 模擬，但取得個別資料集的 API 機制本身是基本 GET 操作",
+          "evidence_refs": [
+            "audit-log.md:L53-L70",
+            "data/sources/cip.yaml:L57-L70"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 3,
+          "rationale": "完全免認證、免註冊、免申請；符合「無任何門檻」判準；五個來源中唯一達到此分的公開平台",
+          "evidence_refs": [
+            "data/sources/cip.yaml:L57-L70"
+          ]
+        },
+        "license_clarity": {
+          "score": 3,
+          "rationale": "全站統一採用獨立制定的「原住民族委員會開放資料使用規範 1.0 版」，有專屬使用規範頁（/Home/Copyright.aspx），授權範圍、義務、免責、保留條款均明文",
+          "evidence_refs": [
+            "data/sources/cip.yaml:L72-L94",
+            "data-source-inventory.md:L20-L42"
+          ]
+        },
+        "institutional_stability": {
+          "score": 2,
+          "rationale": "原民會作為設立機關持續運作，平台正常；但此資料庫本身無明文的法定維運義務（《原住民族基本法》等未直接規定需維護此平台），屬「運作中但無明確法定承諾」",
+          "evidence_refs": [
+            "data/sources/cip.yaml:L7-L14"
+          ]
+        },
+        "reusability": {
+          "score": 3,
+          "rationale": "使用規範明文允許「不限目的、時間及地域、非專屬、不可撤回、免授權金」利用，含商業利用；顯名聲明為唯一義務；有原住民族權益尊重條款但屬義務而非限制，不影響再利用性",
+          "evidence_refs": [
+            "data/sources/cip.yaml:L72-L94"
+          ]
+        }
+      },
+      "data-gov-tw": {
+        "discoverability": {
+          "score": 3,
+          "rationale": "主站首頁即「全部資料集瀏覽」；為國家級公開資料入口",
+          "evidence_refs": [
+            "audit-log.md:L74-L85"
+          ]
+        },
+        "technical_barrier": {
+          "score": 2,
+          "rationale": "CSV 全量匯出 API（/api/v2/rest/dataset/export）簡單 GET 可下載 74,041 行全平台資料；單一資料集亦可瀏覽器下載。但重要警示——公開搜尋 API（/api/front/dataset/list）名存實亡（query 參數被忽略），程式化篩選需下載全量後本地 filter，增加技術負擔",
+          "evidence_refs": [
+            "audit-log.md:L94-L137",
+            "data/sources/data-gov-tw.yaml:L52-L64"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 3,
+          "rationale": "所有資料集免認證、免註冊下載；使用者被動接受政府資料開放授權條款但無主動同意流程",
+          "evidence_refs": [
+            "data/sources/data-gov-tw.yaml:L51-L59"
+          ]
+        },
+        "license_clarity": {
+          "score": 3,
+          "rationale": "全站統一「政府資料開放授權條款第 1 版」，2015-07-27 訂定；有專屬授權頁（/license）；與創用 CC BY 4.0 相容；條款完整清晰",
+          "evidence_refs": [
+            "data/sources/data-gov-tw.yaml:L66-L76"
+          ]
+        },
+        "institutional_stability": {
+          "score": 1,
+          "rationale": "「功能性路徑斷裂」——2026-04-12 實測搜尋 API 的 query 參數完全無效，永遠回傳全部 52,914 筆；agency_tid 篩選亦無效；前端搜尋結果不渲染。資料本身存在且 CSV 匯出可用，但核心搜尋功能失靈，屬近期路徑斷裂",
+          "evidence_refs": [
+            "audit-log.md:L94-L137",
+            "data-source-inventory.md:L63-L69"
+          ]
+        },
+        "reusability": {
+          "score": 3,
+          "rationale": "政府資料開放授權允許商業利用；顯名聲明為唯一義務；與 CC BY 4.0 相容使再利用路徑豐富",
+          "evidence_refs": [
+            "data/sources/data-gov-tw.yaml:L66-L76"
+          ]
+        }
+      },
+      "ticd": {
+        "discoverability": {
+          "score": 1,
+          "rationale": "2026-04-12 補查發現 TICD 於中研院名下保有正式子域名 https://ticd.rchss.sinica.edu.tw/——該 URL 內容為 HTML meta refresh 自動轉址至 OSF 專案頁。此子域名記載於 OSF 專案的「TICD_原住民部落基礎開放資料_正式網址.txt」與對應英文版檔案中。雖然中研院人社中心首頁無直接連結、Google 限域搜尋無結果，但此子域名公開可達且是官方指定正式網址。依「有公開連結但主站無導航到此；需透過搜尋引擎或非官方途徑發現」的 1 分判準",
+          "evidence_refs": [
+            "audit-log.md:L159-L189"
+          ]
+        },
+        "technical_barrier": {
+          "score": 2,
+          "rationale": "OSF REST API v2 免認證可存取公開專案的所有詮釋資料與檔案清單；實際資料檔案（PDF、資料夾）可透過瀏覽器直接下載。屬「基本 HTTP GET」範疇",
+          "evidence_refs": [
+            "audit-log.md:L175-L189",
+            "data/sources/ticd.yaml:L42-L52"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 3,
+          "rationale": "OSF 公開專案對所有人完全無門檻；免登入、免申請",
+          "evidence_refs": [
+            "data/sources/ticd.yaml:L42-L52"
+          ]
+        },
+        "license_clarity": {
+          "score": 3,
+          "rationale": "全站統一標準 GNU General Public License (GPL) 3.0，OSF 平台提供 license embed 可直接存取授權全文；條款為通用開源授權，清晰度高",
+          "evidence_refs": [
+            "data/sources/ticd.yaml:L54-L66"
+          ]
+        },
+        "institutional_stability": {
+          "score": 1,
+          "rationale": "原 ianthro.tw 於近年內消失（DNS 不可解析）；TICD 從機構域名脫落、遷移至個人主導的 OSF 專案。雖然 OSF 專案仍活躍（2025-05-15 更新），但遷移本身即是路徑斷裂；且個人維運的長期穩定性無法等同機構保障",
+          "evidence_refs": [
+            "audit-log.md:L185-L189",
+            "data/sources/ticd.yaml:L75-L75"
+          ]
+        },
+        "reusability": {
+          "score": 3,
+          "rationale": "GPL 3.0 允許商業利用；copyleft 要求衍生作品同樣 GPL 是條件而非限制",
+          "evidence_refs": [
+            "data/sources/ticd.yaml:L54-L66"
+          ]
+        }
+      },
+      "ailt": {
+        "discoverability": {
+          "score": 3,
+          "rationale": "主站 https://ailt.ilrdf.org.tw 首頁可直接進入；ILRDF 為依《原住民族語言發展法》設立的公開機構，關鍵字搜尋可達",
+          "evidence_refs": [
+            "audit-log.md:L192-L214"
+          ]
+        },
+        "technical_barrier": {
+          "score": 0,
+          "rationale": "2026-04-12 實測確認無任何下載機制——語料頁面無下載按鈕；口語語料以 YouTube 嵌入（無法另存原檔）；書面語料以 PDF 預覽呈現；無 API；無批次匯出。屬「實質不可取得原始資料」的最封閉等級",
+          "evidence_refs": [
+            "audit-log.md:L200-L214",
+            "data/sources/ailt.yaml:L57-L67"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 2,
+          "rationale": "瀏覽無任何門檻；但「All Rights Reserved」意味任何再利用均需主動取得授權，且無明確申請流程。依 methodology 判準——「預設著作權保留意味所有再利用需主動取得授權但無明確流程」歸 2 分",
+          "evidence_refs": [
+            "data/sources/ailt.yaml:L71-L87"
+          ]
+        },
+        "license_clarity": {
+          "score": 1,
+          "rationale": "2026-04-12 實測確認全站無任何使用條款頁（/terms、/tos、/copyright、/agreement 等常見路徑均回傳 HTTP 404；導覽列中亦無條款／規範相關連結）；唯一授權宣告為 footer「All Rights Reserved」。雖然形式明確但無使用指引，屬「授權條款隱晦」的 1 分判準",
+          "evidence_refs": [
+            "audit-log.md:L192-L214",
+            "data/sources/ailt.yaml:L69-L87"
+          ]
+        },
+        "institutional_stability": {
+          "score": 2,
+          "rationale": "依《原住民族語言發展法》設立，有法源；2022 年完成建置後持續運作；42 族語輸入法為近期新功能，顯示活躍維運。但資料庫本身無明文的法定維運義務（法律規定「需建置」而非「須持續維護」），屬「運作中但無明確法定承諾」",
+          "evidence_refs": [
+            "data/sources/ailt.yaml:L7-L13"
+          ]
+        },
+        "reusability": {
+          "score": 0,
+          "rationale": "「All Rights Reserved」明示禁止未經授權的再製；無開放授權機制；外部研究者無法引用、轉載或再製語料內容。符合「禁止再製」的 0 分判準",
+          "evidence_refs": [
+            "data/sources/ailt.yaml:L69-L87"
+          ]
+        }
+      },
+      "tcmb": {
+        "discoverability": {
+          "score": 3,
+          "rationale": "主站 https://tcmb.culture.tw/zh-tw 首頁可見所有核心功能入口（素材、主題、策展、OpenAPI 專區、資料授權規範等）；雖然 OpenAPI URL 大小寫敏感（/OpenApi 大寫 A）是次級可發現性問題，但對主站層次可發現性不構成影響",
+          "evidence_refs": [
+            "audit-log.md:L218-L256",
+            "data/sources/tcmb.yaml:L7-L7"
+          ]
+        },
+        "technical_barrier": {
+          "score": 1,
+          "rationale": "OpenAPI 本身是 HTTP GET 回傳 JSON 屬簡單技術；但**申請需提供固定 IP**——此要求使部署複雜度陡增，對個人研究者或無固定公網 IP 環境實質不可行。屬「需撰寫複雜 API 請求／處理部署限制」的 1 分判準。瀏覽單件素材雖然簡單，但程式化取得任何實質規模資料必須跨越固定 IP 門檻",
+          "evidence_refs": [
+            "audit-log.md:L242-L256",
+            "data/sources/tcmb.yaml:L57-L75"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 0,
+          "rationale": "OpenAPI 申請需提供「單位名稱、申請原因、固定 IP 資訊」並經審核通過——精確符合「需專案核准、機構背書、固定 IP 等高門檻程序」的 0 分判準；瀏覽下載雖然無門檻，但依 methodology「完整取用較嚴為準」評分",
+          "evidence_refs": [
+            "audit-log.md:L242-L256",
+            "data/sources/tcmb.yaml:L62-L75"
+          ]
+        },
+        "license_clarity": {
+          "score": 2,
+          "rationale": "2026-04-12 實測 /zh-tw/license 原文確認為 10 種授權標示混用（PDM、CC0、OGDL、CC BY、CC BY-SA、CC BY-NC、CC BY-NC-SA、CC BY-ND、CC BY-NC-ND、僅限公開瀏覽）——標示本身明確但逐筆不同，使用者需針對每筆素材個別查驗 imageLic 與 contentLic 兩個獨立欄位；符合「有明確授權但逐筆不同」的 2 分判準",
+          "evidence_refs": [
+            "data/sources/tcmb.yaml:L88-L122",
+            "data-source-inventory.md:L143-L156"
+          ]
+        },
+        "institutional_stability": {
+          "score": 1,
+          "rationale": "114 年底（2025 年底）完成 2.0 改版後多個舊路徑失效——/about 回傳 301 重導向至 /zh-tw/404；/zh-tw/cc_license 500 錯誤；/zh-tw/openapi 小寫版本回傳 PAGE NOT FOUND（需精確大小寫 /zh-tw/OpenApi）。屬「近 2 年有路徑斷裂」的 1 分判準",
+          "evidence_refs": [
+            "audit-log.md:L228-L256",
+            "data/sources/tcmb.yaml:L113-L114"
+          ]
+        },
+        "reusability": {
+          "score": 2,
+          "rationale": "混合授權；官方分類 5 種為開放資料（PDM、CC0、OGDL、CC BY、CC BY-SA）允許商業利用，5 種非開放（CC BY-NC、CC BY-NC-SA、CC BY-ND、CC BY-NC-ND、僅限公開瀏覽）有商業／改作／公開瀏覽限制。依 methodology 混合授權來源的「典型評分」原則——CC 系列的常見限制（如 NC、ND）使典型再利用性處於「可再利用但有重大限制」的 2 分範圍；使用者無法預知單一物件將落於哪種授權",
+          "evidence_refs": [
+            "data/sources/tcmb.yaml:L88-L122",
+            "data-source-inventory.md:L148-L156"
+          ]
+        }
+      }
+    },
+    "aggregates": {
+      "cip": {
+        "total": 16,
+        "dimensions": {
+          "discoverability": 3,
+          "technical_barrier": 2,
+          "authorization_barrier": 3,
+          "license_clarity": 3,
+          "institutional_stability": 2,
+          "reusability": 3
+        }
+      },
+      "data-gov-tw": {
+        "total": 15,
+        "dimensions": {
+          "discoverability": 3,
+          "technical_barrier": 2,
+          "authorization_barrier": 3,
+          "license_clarity": 3,
+          "institutional_stability": 1,
+          "reusability": 3
+        }
+      },
+      "ticd": {
+        "total": 13,
+        "dimensions": {
+          "discoverability": 1,
+          "technical_barrier": 2,
+          "authorization_barrier": 3,
+          "license_clarity": 3,
+          "institutional_stability": 1,
+          "reusability": 3
+        }
+      },
+      "ailt": {
+        "total": 8,
+        "dimensions": {
+          "discoverability": 3,
+          "technical_barrier": 0,
+          "authorization_barrier": 2,
+          "license_clarity": 1,
+          "institutional_stability": 2,
+          "reusability": 0
+        }
+      },
+      "tcmb": {
+        "total": 9,
+        "dimensions": {
+          "discoverability": 3,
+          "technical_barrier": 1,
+          "authorization_barrier": 0,
+          "license_clarity": 2,
+          "institutional_stability": 1,
+          "reusability": 2
+        }
+      }
+    }
+  },
+  "scatter": [
+    {
+      "id": "cip",
+      "name_zh": "原住民族委員會開放資料平台",
+      "name_en": "Council of Indigenous Peoples Open Data Platform",
+      "access_total": 16,
+      "governance_nonNone": 5,
+      "governance_implemented": 2,
+      "governance_partial": 3
+    },
+    {
+      "id": "data-gov-tw",
+      "name_zh": "政府資料開放平臺",
+      "name_en": "Government Open Data Platform",
+      "access_total": 15,
+      "governance_nonNone": 0,
+      "governance_implemented": 0,
+      "governance_partial": 0
+    },
+    {
+      "id": "ticd",
+      "name_zh": "TICD 台灣原住民族部落開放資料庫",
+      "name_en": "TICD (Taiwan Indigenous Communities Open Data)",
+      "access_total": 13,
+      "governance_nonNone": 1,
+      "governance_implemented": 0,
+      "governance_partial": 1
+    },
+    {
+      "id": "ailt",
+      "name_zh": "原住民族語言資料庫",
+      "name_en": "AILT (Archive of Indigenous Languages in Taiwan)",
+      "access_total": 8,
+      "governance_nonNone": 1,
+      "governance_implemented": 0,
+      "governance_partial": 1
+    },
+    {
+      "id": "tcmb",
+      "name_zh": "國家文化記憶庫 2.0",
+      "name_en": "Taiwan Cultural Memory Bank (TCMB) 2.0",
+      "access_total": 9,
+      "governance_nonNone": 0,
+      "governance_implemented": 0,
+      "governance_partial": 0
+    }
+  ]
+}

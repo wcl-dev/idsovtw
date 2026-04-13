@@ -1,0 +1,123 @@
+# 國家文化記憶庫 2.0（TCMB）
+# 對照：data-source-inventory.md §5；audit-log.md §5
+
+id: tcmb
+name_zh: 國家文化記憶庫 2.0
+name_en: Taiwan Cultural Memory Bank (TCMB) 2.0
+url_primary: https://tcmb.culture.tw/
+
+governing_agency:
+  name_zh: 文化部
+  name_en: Ministry of Culture
+  operating_unit: 國立臺灣歷史博物館（維運單位，地址：臺南市安南區長和路一段 250 號；客服 02-2701-6880 #4035）
+  legal_basis: 配合國家發展委員會「政府資料開放」政策；2022 年上線，114 年底（2025 年底）完成 2.0 改版
+
+data_nature: 文化典藏
+
+# 基本記錄單位為單筆典藏素材；API places 欄位含座標與行政區，理論上可延伸為地理對應
+data_unit:
+  - 典藏物件
+
+themes:
+  # 官方九大分類
+  - 人物與團體
+  - 藝術與人文
+  - 社會與政治
+  - 民俗與宗教
+  - 產業與經濟
+  - 空間、地域與遷徙
+  - 族群與語言
+  - 生物、生態與環境
+  - 其他
+
+# TCMB 首頁顯示的統計數字包括 9,151 筆、10,832 筆等，具體對應項目未明確揭示
+dataset_count: null
+
+# 2026-04-12 實測：站內搜尋「原住民」約 8,000 筆
+indigenous_related_count: 8000
+
+formats:
+  - 圖片
+  - 影片
+  - 聲音
+  - 文件
+  - 3D
+
+access:
+  direct_download: true
+  api:
+    exists: true
+    usable: true
+    endpoint: https://tcmbdata.culture.tw/opendata/openapi
+    auth_required: true
+    auth_barriers:
+      - 需申請 API Key
+      - 申請須提供單位名稱
+      - 申請須提供申請原因
+      - 申請須提供固定 IP 資訊
+    notes: |
+      REST API，HTTP GET 方法，回傳 JSON。驗證碼透過 HTTP Header `Authorization` 傳遞，
+      格式範例 `59c2bcfe-7a61-43d2-b9d0-a500000b0000`（GUID）。
+      Swagger 文件：https://tcmbdata.culture.tw/swagger-ui/
+
+      **開放範圍限制**：OpenAPI 僅涵蓋「圖像類」數位物件，不含影片、聲音、文件、3D 素材。
+      回傳欄位含 imageLic 與 contentLic **兩個獨立授權欄位**——直接印證「同一物件
+      的圖像授權與內容授權可能不同」的混合授權架構。
+  browse_available: true
+  application_required: true
+  login_required: null
+
+# 2026-04-12 實測 /zh-tw/license 頁面，修正原盤點「CC BY-SA 3.0」為單一授權的錯誤
+# 實際上 TCMB 採用「10 種授權標示逐筆混用」的架構
+license:
+  type: 多重授權標示混用（10 種）
+  version: null
+  free_reuse: false  # 整體而言為 false——因為部分素材僅限瀏覽、禁商業或禁改作
+  collective_rights: none
+  mixed: true
+  url: https://tcmb.culture.tw/zh-tw/license
+  notes: |
+    TCMB 採用逐筆授權標示，共 10 種可能標示。依官方定義「開放資料」範圍：
+
+    **屬於開放資料（5 種）**：
+    - PDM（公眾領域標章）
+    - CC0（公眾領域貢獻宣告）
+    - OGDL（政府資料開放授權條款）
+    - CC BY（姓名標示）
+    - CC BY-SA（姓名標示─相同方式分享）
+
+    **不屬於開放資料（5 種）**：
+    - CC BY-NC（姓名標示─非商業性）
+    - CC BY-NC-SA（姓名標示─非商業性─相同方式分享）
+    - CC BY-ND（姓名標示─禁止改作）
+    - CC BY-NC-ND（姓名標示─非商業性─禁止改作）
+    - 僅限公開瀏覽（著作權法保護，僅限本平台公開瀏覽）
+
+    **未見任何原住民族特定條款**——即使 TCMB 有「族群與語言」分類，授權體系對此類內容零關注。
+    License 頁發布 2022-09-07，異動 2025-10-28；OpenAPI 頁異動 2026-03-27（活躍維運中）。
+
+update_frequency: 持續累積；由各地方文化單位與社群貢獻；平台約每月有功能更新
+
+audit:
+  last_checked: "2026-04-12"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L218-L256
+  inventory_ref: data-source-inventory.md:L138-L164
+
+critical_gaps:
+  - API 申請門檻高——需固定 IP，對個人研究者或非機構使用者構成實質障礙
+  - API 開放範圍限於圖像類——影片、聲音、文件、3D 素材均不在 OpenAPI 範圍內，無程式化取得管道
+  - 混合授權架構使再利用需逐筆判斷——imageLic 與 contentLic 兩欄位可能不同，增加使用者的法律判斷負擔
+  - 授權體系對原住民族內容零關注——有「族群與語言」分類但無任何原住民族特定治理條款
+  - SPA 架構與 URL 大小寫敏感——降低工具可發現性（如 /zh-tw/OpenApi 有效但 /zh-tw/openapi 失敗）
+  - 2.0 改版後部分舊路徑失效——如 /about、/cc_license 皆回傳 PAGE NOT FOUND，文件連結脆弱性高
+  - 原住民族相關典藏混雜——約 8,000 筆散布於九大分類中，缺乏獨立的原住民族子分類或治理標示
+
+notable_datasets:
+  - title: API places 欄位（座標與行政區）
+    identifier: null
+    significance: OpenAPI 回傳的 places 欄位含 city、dist、address、lat、lng 座標，是五個來源中唯一可能建立地理對應的結構化欄位——但需先跨過 API Key 申請門檻
+  - title: 「族群與語言」分類
+    identifier: null
+    significance: 九大分類之一，是 TCMB 唯一直接與原住民族議題相關的分類；但內容與治理標示均混雜於整體典藏

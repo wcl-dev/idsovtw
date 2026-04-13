@@ -1,0 +1,75 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://toothless-bite.local/schema/access.schema.json",
+  "title": "存取性分層評分矩陣",
+  "description": "5 資料來源 × 6 維度 = 30 個分數（0-3 分）。每分數含 rationale 與 evidence。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "date_checked", "methodology_ref", "sources"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "date_checked": { "type": "string", "format": "date" },
+    "methodology_ref": {
+      "type": "string",
+      "description": "評分方法論文件路徑（docs/access-methodology.md）"
+    },
+    "sources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cip", "data-gov-tw", "ticd", "ailt", "tcmb"],
+      "properties": {
+        "cip": { "$ref": "#/definitions/sourceAccess" },
+        "data-gov-tw": { "$ref": "#/definitions/sourceAccess" },
+        "ticd": { "$ref": "#/definitions/sourceAccess" },
+        "ailt": { "$ref": "#/definitions/sourceAccess" },
+        "tcmb": { "$ref": "#/definitions/sourceAccess" }
+      }
+    }
+  },
+  "definitions": {
+    "sourceAccess": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "discoverability",
+        "technical_barrier",
+        "authorization_barrier",
+        "license_clarity",
+        "institutional_stability",
+        "reusability"
+      ],
+      "properties": {
+        "discoverability": { "$ref": "#/definitions/scoreCell" },
+        "technical_barrier": { "$ref": "#/definitions/scoreCell" },
+        "authorization_barrier": { "$ref": "#/definitions/scoreCell" },
+        "license_clarity": { "$ref": "#/definitions/scoreCell" },
+        "institutional_stability": { "$ref": "#/definitions/scoreCell" },
+        "reusability": { "$ref": "#/definitions/scoreCell" }
+      }
+    },
+    "scoreCell": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["score", "rationale", "evidence_refs"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 10
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^[\\w./-]+:L\\d+-L\\d+$"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>台灣原住民族資料地景 — 治理揭露工具</title>
+    <meta
+      name="description"
+      content="以詮釋資料揭露台灣五個原住民族相關資料來源之間的斷裂、可及性差異與治理空白。"
+    />
+    <link rel="stylesheet" href="./src/styles.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">跳至主要內容</a>
+
+    <header class="site-header" role="banner">
+      <div class="container">
+        <h1 class="site-title">
+          <a href="#/" aria-label="回首頁">
+            <span class="title-main">台灣原住民族資料地景</span>
+            <span class="title-sub">治理揭露工具</span>
+          </a>
+        </h1>
+        <nav class="main-nav" role="navigation" aria-label="主要導覽">
+          <ul>
+            <li><a href="#/" data-route="">首頁</a></li>
+            <li><a href="#/spectrum" data-route="spectrum">可及性</a></li>
+            <li><a href="#/matrix" data-route="matrix">治理落差</a></li>
+            <li><a href="#/scatter" data-route="scatter">抽取 × 治理</a></li>
+            <li><a href="#/units" data-route="units">資料單位</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- 框架警示 banner：所有視圖可見 -->
+    <aside class="framing-banner" role="note" aria-labelledby="framing-title">
+      <div class="container">
+        <details>
+          <summary id="framing-title">
+            <strong>⚠ 框架警示：</strong>本工具有兩個獨立分析軸，請一起讀
+            <span class="banner-expand-hint">（點擊展開）</span>
+          </summary>
+          <div class="banner-body">
+            <p>
+              <strong>可及性</strong>衡量的是「對外部使用者的可取用性」——高分代表資料易被抽取。
+            </p>
+            <p>
+              <strong>治理落差矩陣</strong>衡量的是「對原住民族社群的權利回應」——高分代表尊重集體權利。
+            </p>
+            <p>
+              <strong>兩者不等同</strong>：一個資料庫可以同時「極易被外人抽取」且「完全不回應社群」。例如原住民族委員會開放資料平台
+              在可及性得 16/18 分（最開放），但在治理面 14 個維度中僅 5 個有實質回應——這是
+              <em>技術開放而治理空白</em>的典型樣本。單讀任一視圖會誤導；兩者須互參。
+            </p>
+          </div>
+        </details>
+      </div>
+    </aside>
+
+    <main id="main" class="site-main" role="main">
+      <div class="container">
+        <!-- 視圖內容由 main.js 注入 -->
+        <div id="view-root" aria-live="polite" aria-atomic="false">
+          <p class="loading">載入中...</p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <p class="footer-meta">
+          資料盤點日期：2026-04-13 ·
+          <span id="bundle-generated">—</span>
+        </p>
+        <p class="footer-sources">
+          涵蓋資料源：原住民族委員會開放資料平台 · 政府資料開放平臺 ·
+          台灣原住民族部落開放資料庫 · 國家文化記憶庫 2.0 · 原住民族語言資料庫
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

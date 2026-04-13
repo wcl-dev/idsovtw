@@ -1,0 +1,340 @@
+# 治理落差評估矩陣
+# 5 資料來源 × 14 治理維度 = 70 格
+# 評分準則見 docs/governance-dimensions.md
+
+schema_version: "1.0"
+date_checked: "2026-04-12"
+methodology_ref: docs/governance-dimensions.md
+
+sources:
+  # ─────────────────────────────────────────────────────────────
+  # 1. CIP — 原住民族委員會開放資料平台
+  # ─────────────────────────────────────────────────────────────
+  cip:
+    checked_documents:
+      - data/sources/cip.yaml
+      - audit-log.md:L21-L70
+      - data-source-inventory.md:L20-L42
+    scores:
+      CARE:
+        # CIP 使用規範聚焦「便利民眾共享政府資料」，未以「服務原住民族集體利益」為論述框架
+        # 「尊重原住民族權益」是義務性條款，非利益框架
+        collective_benefit:
+          score: none
+          rationale: 授權文字聚焦公共利益與政府資料共享，未以原住民族集體利益為論述框架；相關原住民族條款是義務性（要求尊重），非利益性（宣稱服務）
+        authority_to_control:
+          score: none
+          rationale: 無部落、族群自治組織或草根代理機構參與的治理機制；原民會作為國家設立的原住民族專責機關，其內部決策依殖民脈絡分析不構成社群控制權
+        responsibility:
+          score: none
+          rationale: 授權有一般性免責條款但無針對原住民族社群的特別問責機制
+        # 「不妨礙或侵害原住民族之生活方式、傳統習俗...等」屬倫理敏感性宣告但無執行流程
+        ethics:
+          score: partial
+          rationale: 授權中「您利用開放資料時，應尊重原住民族權益，不妨礙或侵害原住民族之生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」屬於一般性的尊重／不侵害宣告，有倫理方向但無具體執行流程（倫理委員會、審查機制等）
+          evidence_refs:
+            - data/sources/cip.yaml:L78-L89
+            - audit-log.md:L53-L70
+
+      OCAP:
+        # CIP 作為原住民族專責政府機構，所有權標示明確但歸屬為中央機構（非族群／部落）
+        ownership:
+          score: partial
+          rationale: 所有權標示明確為原民會（原住民族專責政府機構），依 OCAP 定義屬「所有權明確但歸屬為機構，非社群」，歸為 partial；與實質社群所有權仍有差距
+          evidence_refs:
+            - data/sources/cip.yaml:L22-L27
+        control:
+          score: none
+          rationale: 社群對日常資料處理、修改、儲存無實質控制權，僅能以一般使用者身份取用
+        access:
+          score: none
+          rationale: 所有人取用條件相同（免認證 REST API），無社群優先存取機制；技術上開放但未特別設計社群取用管道
+        # CIP 作為國家設立的原住民族專責機關，在 OCAP Possession 的殖民脈絡分析下
+        # 仍屬國家延伸而非社群自持——依 2026-04-12 精煉定義歸為 none
+        possession:
+          score: none
+          rationale: 資料由原民會（國家設立的原住民族專責政府機關）保管；依 OCAP Possession 的殖民脈絡分析，國家專責機關仍屬國家機構延伸，非部落／族群／自治組織持有，故不構成 partial
+
+      TK_Labels:
+        provenance:
+          score: none
+          rationale: 未採用 TK 標示或等效的文化權威標示機制；資料集僅有機關層級的來源標示
+        protocol:
+          score: none
+          rationale: 無傳統存取規範標示（TK Seasonal、TK Culturally Sensitive 等）
+        permission:
+          score: none
+          rationale: 授權使用政府資料開放系列邏輯，非 TK 風格的使用權限標示
+
+      localized:
+        # 授權條款提及「土地利用與管理模式」但是在尊重義務的脈絡中，非諮商同意機制
+        consultation_consent:
+          score: partial
+          rationale: 授權提及「尊重土地利用與管理模式」等涉及原基法 21 條精神的語句，但僅為尊重義務宣告，無具體諮商同意執行機制
+          evidence_refs:
+            - data/sources/cip.yaml:L78-L89
+            - audit-log.md:L53-L70
+        # 「原住民族傳統智慧創作專用權」明文列為授權不及範圍——精確對應 implemented 判準
+        traditional_knowledge_protection:
+          score: implemented
+          rationale: 授權明文將「原住民族傳統智慧創作專用權」列為授權不及範圍；且規定若未來智慧創作專用權人主張權利，利用者不得對原民會或資料提供人請求賠償——精確實作傳統智慧創作保護維度
+          evidence_refs:
+            - data/sources/cip.yaml:L78-L89
+            - audit-log.md:L53-L70
+        # 授權明文列舉應尊重的權益範圍（生活方式、傳統習俗、文化價值觀、土地利用等）
+        rights_respect_clause:
+          score: implemented
+          rationale: 授權明文列舉具體應尊重的權益範圍——「生活方式、傳統習俗、服飾、文化及價值觀、社會經濟組織型態、資源利用方式、土地利用與管理模式等」；精確對應「明文列舉應尊重的權益範圍」之 implemented 判準
+          evidence_refs:
+            - data/sources/cip.yaml:L78-L89
+            - audit-log.md:L53-L70
+
+  # ─────────────────────────────────────────────────────────────
+  # 2. data.gov.tw — 政府資料開放平臺
+  # ─────────────────────────────────────────────────────────────
+  data-gov-tw:
+    checked_documents:
+      - data/sources/data-gov-tw.yaml
+      - audit-log.md:L74-L156
+      - data-source-inventory.md:L46-L69
+    scores:
+      CARE:
+        collective_benefit:
+          score: none
+          rationale: 政府資料開放授權條款以「便利民眾共享及應用政府資料」為論述；授權全文無任何原住民族特定語句
+        authority_to_control:
+          score: none
+          rationale: 無原住民族對資料使用的任何控制機制
+        responsibility:
+          score: none
+          rationale: 授權僅有一般性免責，無針對原住民族社群的問責機制
+        ethics:
+          score: none
+          rationale: 授權無任何文化敏感性或倫理處理條款
+      OCAP:
+        # 實際資料由各提供機關（非 NDC 本身）所有；絕大多數機關非原住民族專責機構
+        ownership:
+          score: none
+          rationale: 資料由各提供機關擁有，其中原住民族相關資料集 833 筆中 71%（593 筆）來自非原住民族專責機構（臺南市社會局、統計處、臺南市民政局等）；所有權分散且主要非 Indigenous-serving
+        control:
+          score: none
+          rationale: 無社群控制機制
+        access:
+          score: none
+          rationale: 對所有使用者一視同仁；但搜尋 API 名存實亡，反而對所有使用者（含社群）構成同等障礙
+        # 由國發會／各提供機關保管，均為一般政府機關
+        possession:
+          score: none
+          rationale: 由一般政府機關（國發會、各部會、地方政府）保管；無原住民族專責機構涉入
+      TK_Labels:
+        provenance:
+          score: none
+          rationale: 無 TK 或等效文化權威標示
+        protocol:
+          score: none
+          rationale: 無傳統存取規範
+        permission:
+          score: none
+          rationale: 統一使用政府資料開放授權，無 TK 風格使用權限標示
+      localized:
+        consultation_consent:
+          score: none
+          rationale: 授權無相關條款
+        traditional_knowledge_protection:
+          score: none
+          rationale: 授權無原住民族傳統智慧創作保護條款
+        rights_respect_clause:
+          score: none
+          rationale: 授權無原住民族權益尊重條款
+
+  # ─────────────────────────────────────────────────────────────
+  # 3. TICD — 台灣原住民族部落開放資料庫（OSF 託管）
+  # ─────────────────────────────────────────────────────────────
+  ticd:
+    checked_documents:
+      - data/sources/ticd.yaml
+      - audit-log.md:L159-L189
+      - data-source-inventory.md:L73-L106
+    scores:
+      CARE:
+        # GPL 3.0 是通用自由軟體授權，無原住民族相關論述
+        collective_benefit:
+          score: none
+          rationale: GPL 3.0 為通用 copyleft 授權，無任何原住民族集體利益論述；專案標籤雖含 Indigenous peoples，但屬研究主題而非利益框架
+        authority_to_control:
+          score: none
+          rationale: GPL 的「控制權」是授予使用者重製與修改自由，與原住民族社群控制完全無關
+        responsibility:
+          score: none
+          rationale: GPL 的唯一義務是 copyleft（衍生作品必須同樣開放），無社群問責機制
+        ethics:
+          score: none
+          rationale: GPL 無任何倫理或文化敏感性條款
+      OCAP:
+        # TICD 所有權在 林季平 個人（OSF 專案主持人），非社群也非專責機構
+        ownership:
+          score: none
+          rationale: OSF 專案所有權在個人研究者林季平；非原住民族社群、亦非原住民族專責機構
+        control:
+          score: none
+          rationale: 專案主持人有完全控制權，社群無介入機制
+        access:
+          score: none
+          rationale: OSF 公開專案對所有人完全開放；無社群優先存取機制
+        # TICD 呈現「機構保留入口 + OSF 保管內容」的混合架構
+        # 資料本體在 OSF（非國家延伸），中研院僅保留轉址 URL（僅為指標、無資料內容）
+        possession:
+          score: partial
+          rationale: TICD 的持有架構是「混合」——中研院在機構伺服器保留 ticd.rchss.sinica.edu.tw 正式子域名（內容為 104 bytes 的 HTML meta refresh 檔，僅為指標無資料本體）；資料本體則保管在 OSF（Open Science Framework）開放學術平台。依 OCAP Possession 精煉定義判斷實體保管位置——資料本體在 OSF，屬「中立、獨立於國家的非政府機構」；中研院子域名僅承擔入口轉址職責不構成資料持有。故歸為 partial。此混合架構是機構層面入口責任與個人／OSF 層面內容責任的折衷，值得後續觀察若兩邊任一端失效時的穩定性意涵
+          evidence_refs:
+            - data/sources/ticd.yaml:L11-L17
+            - audit-log.md:L175-L205
+      TK_Labels:
+        provenance:
+          score: none
+          rationale: 無 TK 標示；僅有 OSF 標準的 contributor 標示
+        protocol:
+          score: none
+          rationale: 無傳統存取規範標示
+        permission:
+          score: none
+          rationale: 採 GPL 3.0，非 TK 風格使用權限
+      localized:
+        consultation_consent:
+          score: none
+          rationale: 授權與專案文件無任何涉及原基法 21 條精神的條款
+        traditional_knowledge_protection:
+          score: none
+          rationale: 授權無原住民族傳統智慧創作保護條款
+        rights_respect_clause:
+          score: none
+          rationale: 授權無原住民族權益尊重條款
+
+  # ─────────────────────────────────────────────────────────────
+  # 4. AILT — 原住民族語言資料庫
+  # ─────────────────────────────────────────────────────────────
+  ailt:
+    checked_documents:
+      - data/sources/ailt.yaml
+      - audit-log.md:L192-L214
+      - data-source-inventory.md:L110-L134
+    scores:
+      CARE:
+        # AILT 設立宗旨為語料保存，服務原住民族但未以「集體利益」為明確框架
+        # 平台無授權文件可作為治理宣言的主體
+        collective_benefit:
+          score: none
+          rationale: AILT 設立宗旨聚焦「語言保存」而非「服務原住民族集體利益」；平台缺乏授權／治理文件，about 頁宗旨說明屬保存功能性論述而非利益框架
+        authority_to_control:
+          score: none
+          rationale: 著作權人 CIP 與維運單位 ILRDF 皆為國家設立的原住民族專責機關；依殖民脈絡分析，國家專責機關內部決策不構成社群控制。無文件化的部落或自治組織諮詢機制
+        responsibility:
+          score: none
+          rationale: 無問責機制
+        ethics:
+          score: none
+          rationale: 無文化敏感性或倫理條款；僅有 footer 的「All Rights Reserved」
+      OCAP:
+        # 著作權人是 CIP（中央政府機構）——依定義所有權明確但歸屬機構非社群
+        ownership:
+          score: partial
+          rationale: 著作權明確屬於原住民族委員會（CIP）——原住民族專責政府機構；依 OCAP 定義屬「所有權標示明確但歸屬為機構」之 partial
+          evidence_refs:
+            - data/sources/ailt.yaml:L7-L13
+            - audit-log.md:L207-L214
+        control:
+          score: none
+          rationale: 社群無控制權；資料由 ILRDF 維運但依著作權人（CIP）規範處理
+        access:
+          score: none
+          rationale: 線上瀏覽對所有人開放但無下載／API；有登入系統但無資料顯示社群優先存取
+        # ILRDF 為政府依《原住民族語言發展法》設立的基金會，仍屬國家機構延伸
+        # 依 2026-04-12 精煉定義歸為 none
+        possession:
+          score: none
+          rationale: 實體保管在原住民族語言研究發展基金會（ILRDF）——依《原住民族語言發展法》由政府設立的國家基金會；依 OCAP Possession 的殖民脈絡分析，國家設立的原住民族專責基金會仍屬國家延伸，不構成部落／自治組織持有
+      TK_Labels:
+        # AILT 自承知道 AILLA/PARADISEC 的分級存取制度但未實作——值得標注但不能算 partial
+        provenance:
+          score: none
+          rationale: 無 TK 風格文化權威標示；詮釋資料僅有族群歸屬但非 TK Clan／TK Family／TK Community Voice 層級
+        # 值得標注：about 頁自承知道 AILLA/PARADISEC 的分級制度但 AILT 未實作
+        protocol:
+          score: none
+          rationale: 無傳統存取規範標示；值得特別記錄——AILT about 頁自承國際同類資料庫（AILLA、PARADISEC）有「分級訪問權限制度」但 AILT 未實作類似機制
+          evidence_refs:
+            - data/sources/ailt.yaml:L110-L118
+            - audit-log.md:L209-L214
+        permission:
+          score: none
+          rationale: 實質為「All Rights Reserved」預設著作權；無 TK 風格使用權限標示
+      localized:
+        consultation_consent:
+          score: none
+          rationale: 無相關機制
+        traditional_knowledge_protection:
+          score: none
+          rationale: 無傳統智慧創作保護條款；諷刺的是著作權人 CIP 自己在行政資料上有此條款卻未套用於族語資料
+        rights_respect_clause:
+          score: none
+          rationale: 無原住民族權益尊重條款；著作權人 CIP 自家使用規範有此條款但 AILT 未採用
+
+  # ─────────────────────────────────────────────────────────────
+  # 5. TCMB — 國家文化記憶庫 2.0
+  # ─────────────────────────────────────────────────────────────
+  tcmb:
+    checked_documents:
+      - data/sources/tcmb.yaml
+      - audit-log.md:L218-L256
+      - data-source-inventory.md:L138-L164
+    scores:
+      CARE:
+        collective_benefit:
+          score: none
+          rationale: TCMB 授權體系完整但以 CC／公眾領域／OGDL 標示為主，無原住民族集體利益論述；九大分類中「族群與語言」類別亦無特別處理
+        authority_to_control:
+          score: none
+          rationale: 無原住民族控制機制；OpenAPI 需固定 IP 申請門檻反而對個人與小型社群構成障礙
+        responsibility:
+          score: none
+          rationale: 僅有一般性爭議處理條款，無社群問責機制
+        ethics:
+          score: none
+          rationale: 10 種授權標示均為技術性授權（CC／PDM／OGDL），無文化敏感性處理條款
+      OCAP:
+        # 資料由各典藏機關、博物館或民間機構多年典藏；大多非原住民族專責機構
+        ownership:
+          score: none
+          rationale: 素材由各典藏機關、博物館、民間機構擁有；平台明載「各機關大多以著作權法進行相關的權利註記」；所有權高度分散且絕大多數非 Indigenous-serving 機構
+        control:
+          score: none
+          rationale: 無社群控制機制
+        access:
+          score: none
+          rationale: 介面支援 10 種國際語言（中英韓日泰越印馬法德）但不包含任何台灣原住民族語——精確符合「國際化多語介面但不包含族語」的 none 判準；OpenAPI 需固定 IP 申請進一步限制社群可及性
+        # 國立臺灣歷史博物館是一般文化機關——依定義 none
+        possession:
+          score: none
+          rationale: 實體保管在國立臺灣歷史博物館——為一般文化／歷史博物館機關，非原住民族專責機構
+      TK_Labels:
+        # TCMB OpenAPI 有 creator、contributor 欄位但屬標準 Dublin Core 風格，非 TK 層級
+        provenance:
+          score: none
+          rationale: OpenAPI 有 creator、contributor 欄位但為標準後設資料標準，非 TK 風格的文化權威標示
+        protocol:
+          score: none
+          rationale: 無傳統存取規範標示；10 種授權標示均依國際 CC 體系而非傳統規範
+        # CC BY-NC 與 CC BY-ND 有商業／改作限制但依一般著作權邏輯而非文化意義
+        permission:
+          score: none
+          rationale: 授權標示含 CC BY-NC（非商業）、CC BY-ND（禁改作）等有使用限制的類型，但依一般著作權授權邏輯設計，非 TK 風格的文化意義決定
+      localized:
+        consultation_consent:
+          score: none
+          rationale: 授權體系無相關條款
+        traditional_knowledge_protection:
+          score: none
+          rationale: 無原住民族傳統智慧創作保護條款；即使「族群與語言」分類涉及原住民族內容亦無特別處理
+        rights_respect_clause:
+          score: none
+          rationale: 無原住民族權益尊重條款

@@ -1,0 +1,23 @@
+# 依賴
+node_modules/
+
+# 建置產物（GitHub Actions 會自行 build）
+dist/
+
+# 註：site/src/data/bundle.json 雖然由 build-data.mjs 自動生成，但為了讓
+# 新開發者 clone 後可直接 npm run dev（無需先跑 build-data），故仍進版控。
+# CI 部署時會重新生成此檔，所以即使 commit 過時也不會影響線上版本
+
+# 暫存勘查資料（待使用者 code review 後刪除）
+tmp-verify/
+tmp-verify2/
+
+# 系統檔
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp

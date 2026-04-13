@@ -1,0 +1,224 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://toothless-bite.local/schema/source.schema.json",
+  "title": "台灣原住民族資料來源",
+  "description": "盤點對象：一個台灣原住民族相關資料來源的結構化描述。所有非 null 欄位都需在 audit-log.md 有對應證據。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name_zh",
+    "name_en",
+    "url_primary",
+    "governing_agency",
+    "data_nature",
+    "data_unit",
+    "access",
+    "license",
+    "audit",
+    "critical_gaps"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$",
+      "description": "穩定識別碼，小寫英數與連字號"
+    },
+    "name_zh": { "type": "string", "minLength": 1 },
+    "name_en": { "type": "string", "minLength": 1 },
+    "url_primary": { "type": "string", "format": "uri" },
+
+    "governing_agency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name_zh", "name_en"],
+      "properties": {
+        "name_zh": { "type": "string" },
+        "name_en": { "type": "string" },
+        "operating_unit": {
+          "type": ["string", "null"],
+          "description": "實際維運單位（若與主管機構不同），如 TCMB 由國立臺灣歷史博物館維運"
+        },
+        "legal_basis": {
+          "type": ["string", "null"],
+          "description": "設立法源或依據"
+        }
+      }
+    },
+
+    "data_nature": {
+      "type": "string",
+      "enum": ["行政統計", "綜合平台", "學術調查", "語言語料", "文化典藏"],
+      "description": "資料性質分類"
+    },
+
+    "data_unit": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["行政區", "部落", "族群", "語料單元", "典藏物件"]
+      },
+      "description": "資料的基本記錄單位"
+    },
+
+    "themes": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "涵蓋主題清單"
+    },
+
+    "dataset_count": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "null" }
+      ],
+      "description": "資料集總數；未知或不適用時填 null"
+    },
+
+    "indigenous_related_count": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "null" }
+      ],
+      "description": "原住民族相關資料集數量；適用於綜合平台"
+    },
+
+    "formats": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "資料格式（CSV/JSON/XML/影音/文本等）"
+    },
+
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direct_download", "api", "browse_available", "application_required"],
+      "properties": {
+        "direct_download": {
+          "type": "boolean",
+          "description": "是否可無帳號直接下載資料"
+        },
+        "api": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["exists", "usable"],
+          "properties": {
+            "exists": { "type": "boolean" },
+            "usable": {
+              "type": "boolean",
+              "description": "API 是否實際可用（如 data.gov.tw 的搜尋 API 存在但不可用）"
+            },
+            "endpoint": { "type": ["string", "null"] },
+            "auth_required": { "type": ["boolean", "null"] },
+            "auth_barriers": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "申請門檻（如：需固定 IP、需機構背書）"
+            },
+            "notes": { "type": ["string", "null"] }
+          }
+        },
+        "browse_available": {
+          "type": "boolean",
+          "description": "是否可線上瀏覽"
+        },
+        "application_required": {
+          "type": "boolean",
+          "description": "是否需申請或核准才能存取"
+        },
+        "login_required": {
+          "type": ["boolean", "null"],
+          "description": "是否有登入系統；不明確時填 null"
+        }
+      }
+    },
+
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "free_reuse", "collective_rights"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "授權類型，如 政府資料開放授權條款、CC BY-SA 3.0、GPL 3.0、著作權保留 等"
+        },
+        "version": { "type": ["string", "null"] },
+        "free_reuse": {
+          "type": "boolean",
+          "description": "是否允許自由再利用（含商業）"
+        },
+        "collective_rights": {
+          "type": "string",
+          "enum": ["none", "localized", "implemented"],
+          "description": "集體權利條款分層：none 完全沒有／localized 有在地化條款但未對接國際框架（如 CIP 使用規範中的原住民族權益條款）／implemented 明確採用 CARE/OCAP/TK Labels 等國際框架"
+        },
+        "mixed": {
+          "type": ["boolean", "null"],
+          "description": "是否為混合授權（逐筆不同），如 TCMB"
+        },
+        "url": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      }
+    },
+
+    "update_frequency": {
+      "type": ["string", "null"],
+      "description": "整體更新節奏描述；各資料集各異或未標示時填 null"
+    },
+
+    "audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["last_checked", "verification_status", "evidence_refs"],
+      "properties": {
+        "last_checked": {
+          "type": "string",
+          "format": "date"
+        },
+        "verification_status": {
+          "type": "string",
+          "enum": ["verified", "partial", "unverified", "failed"],
+          "description": "整體驗證狀態：verified 全確認／partial 部分確認／unverified 僅文獻／failed 無法存取"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^audit-log\\.md:L\\d+-L\\d+$",
+            "description": "格式 audit-log.md:L{開始行}-L{結束行}"
+          }
+        },
+        "inventory_ref": {
+          "type": ["string", "null"],
+          "pattern": "^data-source-inventory\\.md:L\\d+-L\\d+$",
+          "description": "盤點表對應段落"
+        }
+      }
+    },
+
+    "critical_gaps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "本來源的關鍵限制或治理空白，直接支撐倡議論述"
+    },
+
+    "notable_datasets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title"],
+        "properties": {
+          "title": { "type": "string" },
+          "identifier": { "type": ["string", "null"] },
+          "significance": { "type": "string" }
+        }
+      },
+      "description": "特別值得標示的具體資料集（如 CIP 的部落 GIS 點位表）"
+    }
+  }
+}

@@ -1,0 +1,223 @@
+# 存取性分層評分矩陣
+# 5 資料來源 × 6 維度 = 30 個分數（0-3 分）
+# 評分準則見 docs/access-methodology.md
+
+schema_version: "1.0"
+date_checked: "2026-04-12"
+methodology_ref: docs/access-methodology.md
+
+sources:
+  # ─────────────────────────────────────────────────────────────
+  # 1. CIP — 總分 16/18（最開放）
+  # ─────────────────────────────────────────────────────────────
+  cip:
+    discoverability:
+      score: 3
+      rationale: 主站 https://data.cip.gov.tw 首頁可直接點擊「資料查詢」進入資料集列表（DataMenu.aspx）；平台首頁與導覽對一般使用者完全可見
+      evidence_refs:
+        - audit-log.md:L21-L70
+        - data/sources/cip.yaml:L7-L7
+
+    technical_barrier:
+      score: 2
+      rationale: 每筆資料集有 REST API 下載連結（/API/v1/dump/datastore/A53000000A-{funno}-{format}），免認證直接 HTTP GET 取得 JSON/CSV/XML；雖然 DataMenu.aspx 使用 __doPostBack 使批次瀏覽需 Playwright 模擬，但取得個別資料集的 API 機制本身是基本 GET 操作
+      evidence_refs:
+        - audit-log.md:L53-L70
+        - data/sources/cip.yaml:L57-L70
+
+    authorization_barrier:
+      score: 3
+      rationale: 完全免認證、免註冊、免申請；符合「無任何門檻」判準；五個來源中唯一達到此分的公開平台
+      evidence_refs:
+        - data/sources/cip.yaml:L57-L70
+
+    license_clarity:
+      score: 3
+      rationale: 全站統一採用獨立制定的「原住民族委員會開放資料使用規範 1.0 版」，有專屬使用規範頁（/Home/Copyright.aspx），授權範圍、義務、免責、保留條款均明文
+      evidence_refs:
+        - data/sources/cip.yaml:L72-L94
+        - data-source-inventory.md:L20-L42
+
+    institutional_stability:
+      score: 2
+      rationale: 原民會作為設立機關持續運作，平台正常；但此資料庫本身無明文的法定維運義務（《原住民族基本法》等未直接規定需維護此平台），屬「運作中但無明確法定承諾」
+      evidence_refs:
+        - data/sources/cip.yaml:L7-L14
+
+    reusability:
+      score: 3
+      rationale: 使用規範明文允許「不限目的、時間及地域、非專屬、不可撤回、免授權金」利用，含商業利用；顯名聲明為唯一義務；有原住民族權益尊重條款但屬義務而非限制，不影響再利用性
+      evidence_refs:
+        - data/sources/cip.yaml:L72-L94
+
+  # ─────────────────────────────────────────────────────────────
+  # 2. data.gov.tw — 總分 15/18
+  # ─────────────────────────────────────────────────────────────
+  data-gov-tw:
+    discoverability:
+      score: 3
+      rationale: 主站首頁即「全部資料集瀏覽」；為國家級公開資料入口
+      evidence_refs:
+        - audit-log.md:L74-L85
+
+    technical_barrier:
+      score: 2
+      rationale: CSV 全量匯出 API（/api/v2/rest/dataset/export）簡單 GET 可下載 74,041 行全平台資料；單一資料集亦可瀏覽器下載。但重要警示——公開搜尋 API（/api/front/dataset/list）名存實亡（query 參數被忽略），程式化篩選需下載全量後本地 filter，增加技術負擔
+      evidence_refs:
+        - audit-log.md:L94-L137
+        - data/sources/data-gov-tw.yaml:L52-L64
+
+    authorization_barrier:
+      score: 3
+      rationale: 所有資料集免認證、免註冊下載；使用者被動接受政府資料開放授權條款但無主動同意流程
+      evidence_refs:
+        - data/sources/data-gov-tw.yaml:L51-L59
+
+    license_clarity:
+      score: 3
+      rationale: 全站統一「政府資料開放授權條款第 1 版」，2015-07-27 訂定；有專屬授權頁（/license）；與創用 CC BY 4.0 相容；條款完整清晰
+      evidence_refs:
+        - data/sources/data-gov-tw.yaml:L66-L76
+
+    institutional_stability:
+      score: 1
+      rationale: 「功能性路徑斷裂」——2026-04-12 實測搜尋 API 的 query 參數完全無效，永遠回傳全部 52,914 筆；agency_tid 篩選亦無效；前端搜尋結果不渲染。資料本身存在且 CSV 匯出可用，但核心搜尋功能失靈，屬近期路徑斷裂
+      evidence_refs:
+        - audit-log.md:L94-L137
+        - data-source-inventory.md:L63-L69
+
+    reusability:
+      score: 3
+      rationale: 政府資料開放授權允許商業利用；顯名聲明為唯一義務；與 CC BY 4.0 相容使再利用路徑豐富
+      evidence_refs:
+        - data/sources/data-gov-tw.yaml:L66-L76
+
+  # ─────────────────────────────────────────────────────────────
+  # 3. TICD — 總分 12/18
+  # ─────────────────────────────────────────────────────────────
+  ticd:
+    discoverability:
+      score: 1
+      rationale: 2026-04-12 補查發現 TICD 於中研院名下保有正式子域名 https://ticd.rchss.sinica.edu.tw/——該 URL 內容為 HTML meta refresh 自動轉址至 OSF 專案頁。此子域名記載於 OSF 專案的「TICD_原住民部落基礎開放資料_正式網址.txt」與對應英文版檔案中。雖然中研院人社中心首頁無直接連結、Google 限域搜尋無結果，但此子域名公開可達且是官方指定正式網址。依「有公開連結但主站無導航到此；需透過搜尋引擎或非官方途徑發現」的 1 分判準
+      evidence_refs:
+        - audit-log.md:L159-L189
+
+    technical_barrier:
+      score: 2
+      rationale: OSF REST API v2 免認證可存取公開專案的所有詮釋資料與檔案清單；實際資料檔案（PDF、資料夾）可透過瀏覽器直接下載。屬「基本 HTTP GET」範疇
+      evidence_refs:
+        - audit-log.md:L175-L189
+        - data/sources/ticd.yaml:L42-L52
+
+    authorization_barrier:
+      score: 3
+      rationale: OSF 公開專案對所有人完全無門檻；免登入、免申請
+      evidence_refs:
+        - data/sources/ticd.yaml:L42-L52
+
+    license_clarity:
+      score: 3
+      rationale: 全站統一標準 GNU General Public License (GPL) 3.0，OSF 平台提供 license embed 可直接存取授權全文；條款為通用開源授權，清晰度高
+      evidence_refs:
+        - data/sources/ticd.yaml:L54-L66
+
+    institutional_stability:
+      score: 1
+      rationale: 原 ianthro.tw 於近年內消失（DNS 不可解析）；TICD 從機構域名脫落、遷移至個人主導的 OSF 專案。雖然 OSF 專案仍活躍（2025-05-15 更新），但遷移本身即是路徑斷裂；且個人維運的長期穩定性無法等同機構保障
+      evidence_refs:
+        - audit-log.md:L185-L189
+        - data/sources/ticd.yaml:L75-L75
+
+    reusability:
+      score: 3
+      rationale: GPL 3.0 允許商業利用；copyleft 要求衍生作品同樣 GPL 是條件而非限制
+      evidence_refs:
+        - data/sources/ticd.yaml:L54-L66
+
+  # ─────────────────────────────────────────────────────────────
+  # 4. AILT — 總分 8/18（最封閉）
+  # ─────────────────────────────────────────────────────────────
+  ailt:
+    discoverability:
+      score: 3
+      rationale: 主站 https://ailt.ilrdf.org.tw 首頁可直接進入；ILRDF 為依《原住民族語言發展法》設立的公開機構，關鍵字搜尋可達
+      evidence_refs:
+        - audit-log.md:L192-L214
+
+    technical_barrier:
+      score: 0
+      rationale: 2026-04-12 實測確認無任何下載機制——語料頁面無下載按鈕；口語語料以 YouTube 嵌入（無法另存原檔）；書面語料以 PDF 預覽呈現；無 API；無批次匯出。屬「實質不可取得原始資料」的最封閉等級
+      evidence_refs:
+        - audit-log.md:L200-L214
+        - data/sources/ailt.yaml:L57-L67
+
+    authorization_barrier:
+      score: 2
+      rationale: 瀏覽無任何門檻；但「All Rights Reserved」意味任何再利用均需主動取得授權，且無明確申請流程。依 methodology 判準——「預設著作權保留意味所有再利用需主動取得授權但無明確流程」歸 2 分
+      evidence_refs:
+        - data/sources/ailt.yaml:L71-L87
+
+    license_clarity:
+      score: 1
+      rationale: 2026-04-12 實測確認全站無任何使用條款頁（/terms、/tos、/copyright、/agreement 等常見路徑均回傳 HTTP 404；導覽列中亦無條款／規範相關連結）；唯一授權宣告為 footer「All Rights Reserved」。雖然形式明確但無使用指引，屬「授權條款隱晦」的 1 分判準
+      evidence_refs:
+        - audit-log.md:L192-L214
+        - data/sources/ailt.yaml:L69-L87
+
+    institutional_stability:
+      score: 2
+      rationale: 依《原住民族語言發展法》設立，有法源；2022 年完成建置後持續運作；42 族語輸入法為近期新功能，顯示活躍維運。但資料庫本身無明文的法定維運義務（法律規定「需建置」而非「須持續維護」），屬「運作中但無明確法定承諾」
+      evidence_refs:
+        - data/sources/ailt.yaml:L7-L13
+
+    reusability:
+      score: 0
+      rationale: 「All Rights Reserved」明示禁止未經授權的再製；無開放授權機制；外部研究者無法引用、轉載或再製語料內容。符合「禁止再製」的 0 分判準
+      evidence_refs:
+        - data/sources/ailt.yaml:L69-L87
+
+  # ─────────────────────────────────────────────────────────────
+  # 5. TCMB — 總分 9/18
+  # ─────────────────────────────────────────────────────────────
+  tcmb:
+    discoverability:
+      score: 3
+      rationale: 主站 https://tcmb.culture.tw/zh-tw 首頁可見所有核心功能入口（素材、主題、策展、OpenAPI 專區、資料授權規範等）；雖然 OpenAPI URL 大小寫敏感（/OpenApi 大寫 A）是次級可發現性問題，但對主站層次可發現性不構成影響
+      evidence_refs:
+        - audit-log.md:L218-L256
+        - data/sources/tcmb.yaml:L7-L7
+
+    technical_barrier:
+      score: 1
+      rationale: OpenAPI 本身是 HTTP GET 回傳 JSON 屬簡單技術；但**申請需提供固定 IP**——此要求使部署複雜度陡增，對個人研究者或無固定公網 IP 環境實質不可行。屬「需撰寫複雜 API 請求／處理部署限制」的 1 分判準。瀏覽單件素材雖然簡單，但程式化取得任何實質規模資料必須跨越固定 IP 門檻
+      evidence_refs:
+        - audit-log.md:L242-L256
+        - data/sources/tcmb.yaml:L57-L75
+
+    authorization_barrier:
+      score: 0
+      rationale: OpenAPI 申請需提供「單位名稱、申請原因、固定 IP 資訊」並經審核通過——精確符合「需專案核准、機構背書、固定 IP 等高門檻程序」的 0 分判準；瀏覽下載雖然無門檻，但依 methodology「完整取用較嚴為準」評分
+      evidence_refs:
+        - audit-log.md:L242-L256
+        - data/sources/tcmb.yaml:L62-L75
+
+    license_clarity:
+      score: 2
+      rationale: 2026-04-12 實測 /zh-tw/license 原文確認為 10 種授權標示混用（PDM、CC0、OGDL、CC BY、CC BY-SA、CC BY-NC、CC BY-NC-SA、CC BY-ND、CC BY-NC-ND、僅限公開瀏覽）——標示本身明確但逐筆不同，使用者需針對每筆素材個別查驗 imageLic 與 contentLic 兩個獨立欄位；符合「有明確授權但逐筆不同」的 2 分判準
+      evidence_refs:
+        - data/sources/tcmb.yaml:L88-L122
+        - data-source-inventory.md:L143-L156
+
+    institutional_stability:
+      score: 1
+      rationale: 114 年底（2025 年底）完成 2.0 改版後多個舊路徑失效——/about 回傳 301 重導向至 /zh-tw/404；/zh-tw/cc_license 500 錯誤；/zh-tw/openapi 小寫版本回傳 PAGE NOT FOUND（需精確大小寫 /zh-tw/OpenApi）。屬「近 2 年有路徑斷裂」的 1 分判準
+      evidence_refs:
+        - audit-log.md:L228-L256
+        - data/sources/tcmb.yaml:L113-L114
+
+    reusability:
+      score: 2
+      rationale: 混合授權；官方分類 5 種為開放資料（PDM、CC0、OGDL、CC BY、CC BY-SA）允許商業利用，5 種非開放（CC BY-NC、CC BY-NC-SA、CC BY-ND、CC BY-NC-ND、僅限公開瀏覽）有商業／改作／公開瀏覽限制。依 methodology 混合授權來源的「典型評分」原則——CC 系列的常見限制（如 NC、ND）使典型再利用性處於「可再利用但有重大限制」的 2 分範圍；使用者無法預知單一物件將落於哪種授權
+      evidence_refs:
+        - data/sources/tcmb.yaml:L88-L122
+        - data-source-inventory.md:L148-L156

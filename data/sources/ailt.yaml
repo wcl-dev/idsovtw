@@ -1,0 +1,102 @@
+# 原住民族語言資料庫（AILT）
+# 對照：data-source-inventory.md §4；audit-log.md §4
+
+id: ailt
+name_zh: 原住民族語言資料庫
+name_en: AILT (Archive of Indigenous Languages in Taiwan)
+url_primary: https://ailt.ilrdf.org.tw/
+
+governing_agency:
+  name_zh: 財團法人原住民族語言研究發展基金會
+  name_en: Indigenous Languages Research and Development Foundation (ILRDF)
+  operating_unit: 由 ILRDF 維運；**著作權持有者為原住民族委員會**（footer 聲明「Copyright © 2022 Council of Indigenous Peoples」）
+  legal_basis: |
+    依《原住民族語言發展法》第 9 條設立：「需建置原住民族語言資料庫，積極保存原住民族語料」。
+    2017 年 CIP 委託原住民族語言研究發展中心規劃；2018 年第一期建置開始；2022 年（民國 111 年）完成建置。
+    配合 2022-2026（民國 111-115）「國家語言整體發展方案」持續推動。
+
+data_nature: 語言語料
+
+# 以語料單元為基本記錄單位（單篇口述影音、單篇文本、詞彙條目）；有族群歸屬標示但族群非地理/治理單位
+data_unit:
+  - 語料單元
+
+themes:
+  # 依 about 頁官方表述的七種資料類型
+  - 典藏資料（未轉譯之族語原始檔案，含文本圖檔或未處理音檔）
+  - 典藏語料（經文字轉譯之口語語料或書面語料）
+  - 自然口語語料（各地語言推動人員調查）
+  - 族語新聞與節目語料
+  - 族語文學創作與族語文本
+  - 公文雙語書寫書面語料
+  - 平行語料庫（目前僅阿美語）
+
+# 盤點中未取得資料集筆數；平台不提供批次查詢
+dataset_count: null
+
+formats:
+  - 影片（YouTube 嵌入）
+  - 文件影像（PDF 預覽）
+  - 圖片資源
+  - 語音資料（未確認可否下載原檔）
+
+access:
+  direct_download: false
+  api:
+    exists: false
+    usable: false
+    endpoint: null
+    auth_required: null
+    auth_barriers: []
+    notes: 2026-04-12 實測確認站內無任何 API 功能與下載選項
+  browse_available: true
+  application_required: false
+  # 有登入系統（含驗證碼）；登入後功能未明
+  login_required: true
+
+# 2026-04-12 實測：AILT 全站沒有任何授權頁
+# 以下路徑全部回傳 HTTP 404：/terms、/tos、/agreement、/copyright、/about/terms、/about/copyright
+# 導覽列也沒有任何「條款／規範／著作權／授權」相關連結
+# 全站唯一的授權宣告是 footer 的「All Rights Reserved」
+license:
+  type: 著作權保留（無明確使用授權）
+  version: null
+  free_reuse: false
+  collective_rights: none
+  mixed: false
+  url: null
+  notes: |
+    實質為預設著作權（All Rights Reserved），而非主動授權。Footer 唯一聲明：
+    「原住民族語言研究發展基金會© 版權所有 Copyright © 2022 Council of Indigenous Peoples. All Right Reserved.」
+
+    值得注意的兩個觀察：
+    (1) 著作權持有者是 CIP 而非 ILRDF——理論上 CIP 的「原住民族委員會開放資料使用規範 1.0」
+        含原住民族權益條款，但 AILT 未公開採用此規範，預設仍為保留所有權利；
+    (2) AILT 自己的 about 頁提到 AILLA、PARADISEC 等國際族語語料庫有「分級訪問權限制度」，
+        顯示他們知道有這類設計但未實作——這是設計缺口而非疏忽。
+
+update_frequency: null
+
+audit:
+  last_checked: "2026-04-12"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L192-L214
+  inventory_ref: data-source-inventory.md:L110-L134
+
+critical_gaps:
+  - 無使用授權——全站未提供任何使用規範頁（常見路徑全部 404），僅有 footer 的「All Rights Reserved」；外部研究者無法確認可否引用、轉載、再製
+  - 語料不可下載——語料頁面無任何下載按鈕；影音以 YouTube 嵌入、文件以 PDF 預覽呈現，無原始檔案取得途徑
+  - 無 API——無任何程式化存取機制
+  - 著作權持有者錯置——CIP 是著作權人但 AILT 未採用 CIP 自己的使用規範，形同將資源置於最嚴格的預設著作權下
+  - 設計意識存在但未實作——about 頁自述 AILLA/PARADISEC 有分級訪問制度但 AILT 未實作類似機制
+  - 平行語料僅限阿美語——其餘 15 族語缺乏跨語言對照資源
+  - 詮釋資料粒度不足——每筆資源僅有標題、族群歸屬、觀看次數等；缺乏語言學標註（轉寫、語者、時地情境）
+
+notable_datasets:
+  - title: 族語輸入法（支援 42 族語詞庫）
+    identifier: null
+    significance: 新上線功能；是少數可下載的 AILT 相關資源（下載的是輸入法工具而非語料）
+  - title: 平行語料庫（僅阿美語）
+    identifier: null
+    significance: 16 族語中唯一有平行語料的；其餘 15 族語無跨語言對照資源
