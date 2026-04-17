@@ -22,6 +22,20 @@ export const ACCESS_DIMENSIONS = [
   { key: "reusability", label: "可再利用性", short: "再利" },
 ];
 
+// HTML escape + 極簡 markdown：**text** → <strong>text</strong>
+// 讓 YAML 中的 **粗體** 標記能在前端渲染
+export function escapeAndFormat(s) {
+  return String(s)
+    .replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;",
+    })[c])
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+}
+
 // 來源顯示名稱（簡短版）
 export const SOURCE_DISPLAY = {
   cip: { short: "CIP", full: "原住民族委員會開放資料平台" },

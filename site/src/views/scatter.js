@@ -3,7 +3,7 @@
 // 視覺核心：「沒有任何來源在右上理想象限」
 
 import * as d3 from "d3";
-import { SOURCE_DISPLAY } from "../lib/data.js";
+import { SOURCE_DISPLAY, escapeAndFormat } from "../lib/data.js";
 
 const MAX_X = 18;
 const MAX_Y = 14;
@@ -271,7 +271,7 @@ function renderDetail(bundle, point, container) {
       ? `
         <div class="detail-gaps">
           <h4>本來源的關鍵限制</h4>
-          <ul>${source.critical_gaps.map((g) => `<li>${escapeHtml(g)}</li>`).join("")}</ul>
+          <ul>${source.critical_gaps.map((g) => `<li>${escapeAndFormat(g)}</li>`).join("")}</ul>
         </div>
       `
       : "";
@@ -307,14 +307,4 @@ function renderDetail(bundle, point, container) {
     </div>
   `;
   container.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[c]);
 }

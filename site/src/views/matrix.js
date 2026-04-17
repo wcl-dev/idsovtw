@@ -2,7 +2,7 @@
 // 5 來源 × 14 維度 = 70 格 heatmap，分為 4 框架類別
 // 點選任一 cell 顯示完整 rationale 與 evidence
 
-import { SOURCE_DISPLAY } from "../lib/data.js";
+import { SOURCE_DISPLAY, escapeAndFormat } from "../lib/data.js";
 
 // 4 框架與其維度（順序與 governance-matrix.yaml 一致）
 const FRAMEWORKS = [
@@ -198,7 +198,7 @@ function renderDetail(bundle, dataset, container) {
   const cell = bundle.governance.sources[source].scores[framework][dim];
 
   const evidenceHtml = cell.evidence_refs && cell.evidence_refs.length
-    ? cell.evidence_refs.map((ref) => `<code>${escapeHtml(ref)}</code>`).join(" · ")
+    ? cell.evidence_refs.map((ref) => `<code>${escapeAndFormat(ref)}</code>`).join(" · ")
     : "（此格為「無」評分，無需附證據；前提是已實際檢查過該來源相關文件）";
 
   container.innerHTML = `
@@ -208,7 +208,7 @@ function renderDetail(bundle, dataset, container) {
         ${fw.label} · <strong>${d.label}</strong>
         <span class="detail-dim-score" data-score="${score}">${SCORE_DISPLAY[score].symbol} ${SCORE_DISPLAY[score].label}</span>
       </p>
-      <p class="detail-rationale">${escapeHtml(cell.rationale || "（未提供理由）")}</p>
+      <p class="detail-rationale">${escapeAndFormat(cell.rationale || "（未提供理由）")}</p>
       <p class="detail-evidence">證據：${evidenceHtml}</p>
       <p class="detail-cross-links">
         <a href="#/spectrum/${source}">→ 查看可及性詳情</a> ·
@@ -218,14 +218,4 @@ function renderDetail(bundle, dataset, container) {
     </div>
   `;
   container.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[c]);
 }

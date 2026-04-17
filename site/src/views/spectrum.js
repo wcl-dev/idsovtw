@@ -1,7 +1,7 @@
 // View 1：可及性（內部 ID：spectrum；對應資料 access-tiers.yaml）
 // 5 來源 × 6 維度的 stacked 條狀矩陣；點選展開詳情
 
-import { ACCESS_DIMENSIONS, SOURCE_DISPLAY } from "../lib/data.js";
+import { ACCESS_DIMENSIONS, SOURCE_DISPLAY, escapeAndFormat } from "../lib/data.js";
 
 export function renderSpectrum(bundle, root, selectedSource = null) {
   const sortedSources = [...bundle.meta.source_order].sort(
@@ -129,7 +129,7 @@ function renderDetail(bundle, id, container) {
           <span class="detail-dim-name">${d.label}</span>
           <span class="detail-dim-score" data-score="${cell.score}">${cell.score} / 3</span>
         </div>
-        <p class="detail-rationale">${escapeHtml(cell.rationale)}</p>
+        <p class="detail-rationale">${escapeAndFormat(cell.rationale)}</p>
         <p class="detail-evidence">佐證：${evidenceHtml}</p>
       </div>
     `;
@@ -150,14 +150,4 @@ function renderDetail(bundle, id, container) {
     </div>
   `;
   container.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function escapeHtml(s) {
-  return String(s).replace(/[&<>"']/g, (c) => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  })[c]);
 }
