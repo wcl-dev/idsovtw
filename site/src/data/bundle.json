@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-04-13T13:44:43.651Z",
+  "generated_at": "2026-04-17T14:06:01.194Z",
   "meta": {
     "source_order": [
       "cip",
       "data-gov-tw",
       "ticd",
       "ailt",
-      "tcmb"
+      "tcmb",
+      "openmuseum"
     ],
     "access_max_score": 18,
     "governance_total_cells": 14,
@@ -474,6 +475,99 @@
           "significance": "九大分類之一，是 TCMB 唯一直接與原住民族議題相關的分類；但內容與治理標示均混雜於整體典藏"
         }
       ]
+    },
+    "openmuseum": {
+      "id": "openmuseum",
+      "name_zh": "開放博物館",
+      "name_en": "Open Museum",
+      "url_primary": "https://openmuseum.tw/",
+      "governing_agency": {
+        "name_zh": "中央研究院數位文化中心",
+        "name_en": "Academia Sinica Digital Culture Center",
+        "operating_unit": "技術與平台維運由數位文化中心；藏品由 77 個主題博物館／機構／個人貢獻者提供，智慧財產權不屬平台",
+        "legal_basis": null
+      },
+      "data_nature": "文化典藏",
+      "data_unit": [
+        "典藏物件"
+      ],
+      "themes": [
+        "生物",
+        "史料",
+        "繪畫",
+        "電影",
+        "音樂",
+        "文學",
+        "天文",
+        "攝影"
+      ],
+      "dataset_count": 1172413,
+      "indigenous_related_count": null,
+      "formats": [
+        "圖像",
+        "文字／文獻",
+        "影片",
+        "音訊",
+        "3D（部分展覽）"
+      ],
+      "access": {
+        "direct_download": true,
+        "api": {
+          "exists": false,
+          "usable": false,
+          "endpoint": null,
+          "auth_required": null,
+          "auth_barriers": [],
+          "notes": "2026-04-13 實測以下路徑全部回傳 HTTP 404：/api、/api/v1、/api/v2、\n/api/objects、/api/search、/api/collections、/graphql、/iiif、/manifest.json、/api/iiif\n平台以「開放」為名但無任何公開 API 介面，這是規模（117 萬件）與開放性之間顯著不匹配\n"
+        },
+        "browse_available": true,
+        "application_required": false,
+        "login_required": false
+      },
+      "license": {
+        "type": "多重授權／權利標示混用（14 種）",
+        "version": null,
+        "free_reuse": false,
+        "collective_rights": "none",
+        "mixed": true,
+        "url": "https://openmuseum.tw/howto",
+        "notes": "平台明文「開放博物館並不擁有平台上任何藏品的智慧財產權」——所有授權標示由貢獻者決定，\n平台僅提供結構化標示系統。2026-04-13 實測 /howto 原文，14 種標示分四類：\n\n**可自由使用（5 種）**：\n- PDM 公眾領域標章\n- CC0 公眾領域貢獻宣告\n- CC BY 3.0 TW\n- CC BY-SA 3.0 TW\n- OGDL 政府資料開放授權條款第 1 版\n\n**有條件的開放使用（4 種）**：\n- CC BY-NC 3.0 TW\n- CC BY-ND 3.0 TW\n- CC BY-NC-ND 3.0 TW\n- CC BY-NC-SA 3.0 TW\n\n**僅能於本網站使用（2 種）**：\n- 著作權利所有-姓名標示-非商業性的教育與研究使用\n- 著作權利所有-可用於本站提供的服務\n\n**僅能瀏覽（3 種）**：\n- 著作權利不明-未經實質評估（COPYRIGHT NOT EVALUATED）\n- 著作權利不明-重要評量要素未明（COPYRIGHT UNDETERMINED）\n- 著作權利所有\n\n另含參照外部機構聲明的 2 種：國會圖書館權利聲明、拉法葉學院數位資料使用指南。\n\n**未見任何原住民族特定條款**——與 TCMB 同樣零關注集體權利，即使有原住民族相關藏品。\n"
+      },
+      "update_frequency": "持續累積；由貢獻機構提交新藏品；2020-2025 連年舉辦「博物館日」活動顯示活躍維運",
+      "audit": {
+        "last_checked": "2026-04-13",
+        "verification_status": "verified",
+        "evidence_refs": [
+          "audit-log.md:L273-L326"
+        ],
+        "inventory_ref": null
+      },
+      "critical_gaps": [
+        "無公開 API——規模最大（117 萬件）但程式化存取能力最差，與「開放」之名矛盾",
+        "授權架構極為複雜——14 種標示（比 TCMB 的 10 種更多）使逐筆判斷成本高",
+        "搜尋機制為 Drupal views filter——URL 不支援 keyword 參數，自動化查詢困難",
+        "平台明文「不擁有藏品智財權」——治理責任實質分散於各貢獻機構，無集中的治理改進可能",
+        "**Google Analytics GA4 追蹤**（tid=G-08NVTPVTMS）——對以「開放」為名的平台是結構性矛盾",
+        "原住民族相關藏品無獨立分類——比 TCMB 的「族群與語言」分類更缺乏可見性",
+        "授權體系對原住民族內容零關注——無任何文化敏感性處理條款"
+      ],
+      "notable_datasets": [
+        {
+          "title": "Ulay‧織男（烏來泰雅民族博物館展覽）",
+          "identifier": null,
+          "significance": "2026-04-13 勘查時首頁精選展覽中可見的原住民族主題展——展示平台上確實有由原住民族機構（烏來泰雅民族博物館）貢獻的內容"
+        },
+        {
+          "title": "歷年博物館日專頁（2020-2025）",
+          "identifier": null,
+          "significance": "連續六年舉辦；多個年度專頁含原住民族主題——機構穩定性的具體指標"
+        },
+        {
+          "title": "策展平台 plaza.openmuseum.tw",
+          "identifier": null,
+          "significance": "分離的使用者策展入口；「開放典藏權、詮釋權、創作權」核心理念的實作——但參與需登入註冊，這本身是社群門檻"
+        }
+      ]
     }
   },
   "governance": {
@@ -876,6 +970,78 @@
             }
           }
         }
+      },
+      "openmuseum": {
+        "checked_documents": [
+          "data/sources/openmuseum.yaml",
+          "audit-log.md:L273-L326"
+        ],
+        "scores": {
+          "CARE": {
+            "collective_benefit": {
+              "score": "none",
+              "rationale": "平台 about 頁訴求「打開典藏權、詮釋權、創作權」，但未以原住民族集體利益為框架；howto 頁明文「平台不擁有藏品智財權」將治理推給貢獻機構"
+            },
+            "authority_to_control": {
+              "score": "none",
+              "rationale": "無原住民族對資料使用的控制機制；平台作為中研院所屬，內部決策不構成社群控制"
+            },
+            "responsibility": {
+              "score": "none",
+              "rationale": "無針對原住民族社群的問責機制；平台明文「不擁有藏品智財權」實質將責任分散至各貢獻機構"
+            },
+            "ethics": {
+              "score": "none",
+              "rationale": "14 種授權／權利標示均為技術性授權，無文化敏感性處理條款"
+            }
+          },
+          "OCAP": {
+            "ownership": {
+              "score": "none",
+              "rationale": "平台明文「並不擁有平台上任何藏品的智慧財產權」；所有權分散於各貢獻機構（77 個主題博物館），絕大多數非原住民族相關機構"
+            },
+            "control": {
+              "score": "none",
+              "rationale": "無社群控制機制；策展平台 plaza.openmuseum.tw 需登入但無任何資料顯示原住民族社群有優先控制管道"
+            },
+            "access": {
+              "score": "none",
+              "rationale": "一般瀏覽對所有人開放但無社群優先管道；無族語介面；無部落層級取用工具——符合「普世開放但非社群化」的 none 判準"
+            },
+            "possession": {
+              "score": "none",
+              "rationale": "中研院數位文化中心為國家學術機構，各貢獻藏品實體分散於原貢獻機構（博物館、基金會等）；均非原住民族社群、部落或自治組織持有"
+            }
+          },
+          "TK_Labels": {
+            "provenance": {
+              "score": "none",
+              "rationale": "藏品有 creator／貢獻機構標示但為標準文博詮釋資料，非 TK 風格文化權威標示"
+            },
+            "protocol": {
+              "score": "none",
+              "rationale": "14 種授權／權利標示均依一般著作權與 CC 體系設計，無傳統存取規範標示"
+            },
+            "permission": {
+              "score": "none",
+              "rationale": "授權含 NC／ND／僅能瀏覽等限制類型，但依一般著作權邏輯而非文化意義"
+            }
+          },
+          "localized": {
+            "consultation_consent": {
+              "score": "none",
+              "rationale": "授權體系無相關條款"
+            },
+            "traditional_knowledge_protection": {
+              "score": "none",
+              "rationale": "無原住民族傳統智慧創作保護條款；即使平台有原住民族主題展覽（如烏來泰雅民族博物館 Ulay‧織男）亦無特別處理"
+            },
+            "rights_respect_clause": {
+              "score": "none",
+              "rationale": "無原住民族權益尊重條款"
+            }
+          }
+        }
       }
     },
     "aggregates": {
@@ -908,6 +1074,13 @@
         "total": 14
       },
       "tcmb": {
+        "none": 14,
+        "partial": 0,
+        "implemented": 0,
+        "nonNone": 0,
+        "total": 14
+      },
+      "openmuseum": {
         "none": 14,
         "partial": 0,
         "implemented": 0,
@@ -1155,6 +1328,54 @@
             "data-source-inventory.md:L148-L156"
           ]
         }
+      },
+      "openmuseum": {
+        "discoverability": {
+          "score": 3,
+          "rationale": "主站 https://openmuseum.tw 首頁可直達；中央研究院知名平台，文博界廣泛熟知；2020-2025 連續六年舉辦「博物館日」活動提高可見度",
+          "evidence_refs": [
+            "audit-log.md:L273-L326",
+            "data/sources/openmuseum.yaml:L7-L7"
+          ]
+        },
+        "technical_barrier": {
+          "score": 1,
+          "rationale": "2026-04-13 實測確認**無任何公開 API**——嘗試 /api、/api/v1、/api/v2、/api/objects、/api/search、/api/collections、/graphql、/iiif、/manifest.json、/api/iiif 均回傳 HTTP 404。瀏覽個別藏品可用，但批次程式化存取無途徑；搜尋為 Drupal views exposed filter（URL 不支援 keyword 參數），自動化查詢困難。117 萬件的規模下沒有 API 是與「開放」之名顯著矛盾，歸 1 分（需複雜前端互動或爬蟲對抗動態結構）",
+          "evidence_refs": [
+            "audit-log.md:L286-L296",
+            "data/sources/openmuseum.yaml:L43-L52"
+          ]
+        },
+        "authorization_barrier": {
+          "score": 3,
+          "rationale": "平台 howto 頁明文「一般大眾不需申請成為開放博物館會員，即可於平台瀏覽或依個別藏品的授權條款與使用聲明使用這些內容」；策展平台 plaza.openmuseum.tw 需登入註冊但屬進階功能，不影響核心資料取用。完全無門檻",
+          "evidence_refs": [
+            "data/sources/openmuseum.yaml:L43-L56"
+          ]
+        },
+        "license_clarity": {
+          "score": 2,
+          "rationale": "2026-04-13 實測 /howto 原文——**14 種權利／授權標示**（比 TCMB 的 10 種更多），分 4 大類（可自由使用 5 種、有條件的開放使用 4 種、僅能於本網站使用 2 種、僅能瀏覽 3 種），另有 2 種參照外部機構聲明。各類標示在 /howto 頁說明清楚，但逐筆適用不同，使用者需針對每件藏品個別查驗；符合「有明確授權但逐筆不同」的 2 分判準",
+          "evidence_refs": [
+            "data/sources/openmuseum.yaml:L58-L97",
+            "audit-log.md:L277-L284"
+          ]
+        },
+        "institutional_stability": {
+          "score": 3,
+          "rationale": "中央研究院作為國家學術機構具法定穩定性；2020-2025 連續六年舉辦「博物館日」活動；策展平台 plaza.openmuseum.tw 持續擴充（公民科學協作功能即將推出）；未偵測到路徑斷裂或功能失靈",
+          "evidence_refs": [
+            "audit-log.md:L299-L304",
+            "data/sources/openmuseum.yaml:L100-L100"
+          ]
+        },
+        "reusability": {
+          "score": 2,
+          "rationale": "14 種授權標示，平台自有分類中 5 種「可自由使用」允許商業；4 種「有條件開放」含 NC／ND 限制；5 種「僅能於本網站使用」或「僅能瀏覽」完全不可再利用。依 methodology 混合授權「典型評分」原則——典型物件面臨 CC 系列的常見限制（NC／ND）或「僅能瀏覽」，處於「可再利用但有重大限制」的 2 分範圍",
+          "evidence_refs": [
+            "data/sources/openmuseum.yaml:L58-L97"
+          ]
+        }
       }
     },
     "aggregates": {
@@ -1212,6 +1433,17 @@
           "institutional_stability": 1,
           "reusability": 2
         }
+      },
+      "openmuseum": {
+        "total": 14,
+        "dimensions": {
+          "discoverability": 3,
+          "technical_barrier": 1,
+          "authorization_barrier": 3,
+          "license_clarity": 2,
+          "institutional_stability": 3,
+          "reusability": 2
+        }
       }
     }
   },
@@ -1257,6 +1489,15 @@
       "name_zh": "國家文化記憶庫 2.0",
       "name_en": "Taiwan Cultural Memory Bank (TCMB) 2.0",
       "access_total": 9,
+      "governance_nonNone": 0,
+      "governance_implemented": 0,
+      "governance_partial": 0
+    },
+    {
+      "id": "openmuseum",
+      "name_zh": "開放博物館",
+      "name_en": "Open Museum",
+      "access_total": 14,
       "governance_nonNone": 0,
       "governance_implemented": 0,
       "governance_partial": 0

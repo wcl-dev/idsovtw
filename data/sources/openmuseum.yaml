@@ -1,0 +1,127 @@
+# 開放博物館 Open Museum
+# 2026-04-13 新增（第 6 個來源）
+# 對照：data-source-inventory.md §6；audit-log.md §6
+
+id: openmuseum
+name_zh: 開放博物館
+name_en: Open Museum
+url_primary: https://openmuseum.tw/
+
+governing_agency:
+  name_zh: 中央研究院數位文化中心
+  name_en: Academia Sinica Digital Culture Center
+  operating_unit: 技術與平台維運由數位文化中心；藏品由 77 個主題博物館／機構／個人貢獻者提供，智慧財產權不屬平台
+  legal_basis: null
+
+data_nature: 文化典藏
+
+data_unit:
+  - 典藏物件
+
+themes:
+  # 官方表述：生物、史料、繪畫、電影、音樂、文學、天文、攝影
+  - 生物
+  - 史料
+  - 繪畫
+  - 電影
+  - 音樂
+  - 文學
+  - 天文
+  - 攝影
+
+dataset_count: 1172413
+
+# 2026-04-13 實測：原住民族相關內容存在（至少「Ulay‧織男」烏來泰雅民族博物館、
+# 歷年「博物館日」專頁、「原住民族事務委員會」相關連結）但無獨立分類，且搜尋機制
+# 為 Drupal views exposed filter 不支援 URL keyword 參數，自動化計數未能取得
+indigenous_related_count: null
+
+formats:
+  - 圖像
+  - 文字／文獻
+  - 影片
+  - 音訊
+  - 3D（部分展覽）
+
+access:
+  direct_download: true
+  api:
+    exists: false
+    usable: false
+    endpoint: null
+    auth_required: null
+    auth_barriers: []
+    notes: |
+      2026-04-13 實測以下路徑全部回傳 HTTP 404：/api、/api/v1、/api/v2、
+      /api/objects、/api/search、/api/collections、/graphql、/iiif、/manifest.json、/api/iiif
+      平台以「開放」為名但無任何公開 API 介面，這是規模（117 萬件）與開放性之間顯著不匹配
+  browse_available: true
+  application_required: false
+  login_required: false  # 一般瀏覽／下載個別藏品不需登入；plaza.openmuseum.tw 策展參與才需帳號
+
+# 2026-04-13 實測 /howto 原文：14 種授權／權利標示，分 4 大類
+license:
+  type: 多重授權／權利標示混用（14 種）
+  version: null
+  free_reuse: false  # 整體而言為 false——含 NC/ND/僅限瀏覽等非完全開放標示
+  collective_rights: none
+  mixed: true
+  url: https://openmuseum.tw/howto
+  notes: |
+    平台明文「開放博物館並不擁有平台上任何藏品的智慧財產權」——所有授權標示由貢獻者決定，
+    平台僅提供結構化標示系統。2026-04-13 實測 /howto 原文，14 種標示分四類：
+
+    **可自由使用（5 種）**：
+    - PDM 公眾領域標章
+    - CC0 公眾領域貢獻宣告
+    - CC BY 3.0 TW
+    - CC BY-SA 3.0 TW
+    - OGDL 政府資料開放授權條款第 1 版
+
+    **有條件的開放使用（4 種）**：
+    - CC BY-NC 3.0 TW
+    - CC BY-ND 3.0 TW
+    - CC BY-NC-ND 3.0 TW
+    - CC BY-NC-SA 3.0 TW
+
+    **僅能於本網站使用（2 種）**：
+    - 著作權利所有-姓名標示-非商業性的教育與研究使用
+    - 著作權利所有-可用於本站提供的服務
+
+    **僅能瀏覽（3 種）**：
+    - 著作權利不明-未經實質評估（COPYRIGHT NOT EVALUATED）
+    - 著作權利不明-重要評量要素未明（COPYRIGHT UNDETERMINED）
+    - 著作權利所有
+
+    另含參照外部機構聲明的 2 種：國會圖書館權利聲明、拉法葉學院數位資料使用指南。
+
+    **未見任何原住民族特定條款**——與 TCMB 同樣零關注集體權利，即使有原住民族相關藏品。
+
+update_frequency: 持續累積；由貢獻機構提交新藏品；2020-2025 連年舉辦「博物館日」活動顯示活躍維運
+
+audit:
+  last_checked: "2026-04-13"
+  verification_status: verified
+  evidence_refs:
+    - audit-log.md:L273-L326
+  inventory_ref: null  # 待 inventory 更新後補上
+
+critical_gaps:
+  - 無公開 API——規模最大（117 萬件）但程式化存取能力最差，與「開放」之名矛盾
+  - 授權架構極為複雜——14 種標示（比 TCMB 的 10 種更多）使逐筆判斷成本高
+  - 搜尋機制為 Drupal views filter——URL 不支援 keyword 參數，自動化查詢困難
+  - 平台明文「不擁有藏品智財權」——治理責任實質分散於各貢獻機構，無集中的治理改進可能
+  - "**Google Analytics GA4 追蹤**（tid=G-08NVTPVTMS）——對以「開放」為名的平台是結構性矛盾"
+  - 原住民族相關藏品無獨立分類——比 TCMB 的「族群與語言」分類更缺乏可見性
+  - 授權體系對原住民族內容零關注——無任何文化敏感性處理條款
+
+notable_datasets:
+  - title: Ulay‧織男（烏來泰雅民族博物館展覽）
+    identifier: null
+    significance: 2026-04-13 勘查時首頁精選展覽中可見的原住民族主題展——展示平台上確實有由原住民族機構（烏來泰雅民族博物館）貢獻的內容
+  - title: 歷年博物館日專頁（2020-2025）
+    identifier: null
+    significance: 連續六年舉辦；多個年度專頁含原住民族主題——機構穩定性的具體指標
+  - title: 策展平台 plaza.openmuseum.tw
+    identifier: null
+    significance: 分離的使用者策展入口；「開放典藏權、詮釋權、創作權」核心理念的實作——但參與需登入註冊，這本身是社群門檻

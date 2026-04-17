@@ -34,7 +34,7 @@ const ACCESS_PATH = join(ROOT, "data", "access-tiers.yaml");
 const OUT_DIR = join(ROOT, "site", "src", "data");
 const OUT_PATH = join(OUT_DIR, "bundle.json");
 
-const SOURCE_ORDER = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb"];
+const SOURCE_ORDER = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb", "openmuseum"];
 
 function loadYaml(path) {
   return yaml.load(readFileSync(path, "utf8"));

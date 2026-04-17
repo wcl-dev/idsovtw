@@ -110,7 +110,7 @@ function checkGovernanceMatrix(matrix) {
   const stats = { none: 0, partial: 0, implemented: 0 };
   const scoreDetails = [];
 
-  const expectedSources = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb"];
+  const expectedSources = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb", "openmuseum"];
   const expectedDims = {
     CARE: ["collective_benefit", "authority_to_control", "responsibility", "ethics"],
     OCAP: ["ownership", "control", "access", "possession"],
@@ -121,7 +121,7 @@ function checkGovernanceMatrix(matrix) {
       "rights_respect_clause",
     ],
   };
-  const totalExpectedCells = 5 * (4 + 4 + 3 + 3); // = 70
+  const totalExpectedCells = 6 * (4 + 4 + 3 + 3); // = 84
 
   let cellsSeen = 0;
 
@@ -228,7 +228,7 @@ function checkAccessTiers(access) {
     "institutional_stability",
     "reusability",
   ];
-  const expectedSources = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb"];
+  const expectedSources = ["cip", "data-gov-tw", "ticd", "ailt", "tcmb", "openmuseum"];
   const totalExpectedCells = expectedSources.length * dimensions.length;
 
   let cellsSeen = 0;
@@ -418,7 +418,7 @@ async function main() {
       if (matrixFailures.length === 0) {
         console.log(`${ansi.green("✓")} governance-matrix.yaml`);
         console.log(
-          `  ${ansi.dim("格數:")} ${cellsSeen}／70  ` +
+          `  ${ansi.dim("格數:")} ${cellsSeen}／84  ` +
             `${ansi.dim("分布:")} ` +
             `implemented ${ansi.bold(stats.implemented)}  ` +
             `partial ${ansi.bold(stats.partial)}  ` +
@@ -470,7 +470,7 @@ async function main() {
       if (accessFailures.length === 0) {
         console.log(`${ansi.green("✓")} access-tiers.yaml`);
         console.log(
-          `  ${ansi.dim("格數:")} ${cellsSeen}／30  ` +
+          `  ${ansi.dim("格數:")} ${cellsSeen}／36  ` +
             `${ansi.dim("分數分布:")} ` +
             `0分 ${ansi.bold(scoreDistribution[0])}  ` +
             `1分 ${ansi.bold(scoreDistribution[1])}  ` +

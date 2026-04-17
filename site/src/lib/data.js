@@ -29,4 +29,5 @@ export const SOURCE_DISPLAY = {
   ticd: { short: "TICD", full: "台灣原住民族部落開放資料庫" },
   ailt: { short: "AILT", full: "原住民族語言資料庫" },
   tcmb: { short: "TCMB", full: "國家文化記憶庫 2.0" },
+  openmuseum: { short: "openmuseum", full: "開放博物館" },
 };

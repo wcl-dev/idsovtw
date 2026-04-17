@@ -338,3 +338,58 @@ sources:
         rights_respect_clause:
           score: none
           rationale: 無原住民族權益尊重條款
+
+  # ─────────────────────────────────────────────────────────────
+  # 6. 開放博物館 openmuseum — 2026-04-13 新增
+  # ─────────────────────────────────────────────────────────────
+  openmuseum:
+    checked_documents:
+      - data/sources/openmuseum.yaml
+      - audit-log.md:L273-L326
+    scores:
+      CARE:
+        collective_benefit:
+          score: none
+          rationale: 平台 about 頁訴求「打開典藏權、詮釋權、創作權」，但未以原住民族集體利益為框架；howto 頁明文「平台不擁有藏品智財權」將治理推給貢獻機構
+        authority_to_control:
+          score: none
+          rationale: 無原住民族對資料使用的控制機制；平台作為中研院所屬，內部決策不構成社群控制
+        responsibility:
+          score: none
+          rationale: 無針對原住民族社群的問責機制；平台明文「不擁有藏品智財權」實質將責任分散至各貢獻機構
+        ethics:
+          score: none
+          rationale: 14 種授權／權利標示均為技術性授權，無文化敏感性處理條款
+      OCAP:
+        ownership:
+          score: none
+          rationale: 平台明文「並不擁有平台上任何藏品的智慧財產權」；所有權分散於各貢獻機構（77 個主題博物館），絕大多數非原住民族相關機構
+        control:
+          score: none
+          rationale: 無社群控制機制；策展平台 plaza.openmuseum.tw 需登入但無任何資料顯示原住民族社群有優先控制管道
+        access:
+          score: none
+          rationale: 一般瀏覽對所有人開放但無社群優先管道；無族語介面；無部落層級取用工具——符合「普世開放但非社群化」的 none 判準
+        possession:
+          score: none
+          rationale: 中研院數位文化中心為國家學術機構，各貢獻藏品實體分散於原貢獻機構（博物館、基金會等）；均非原住民族社群、部落或自治組織持有
+      TK_Labels:
+        provenance:
+          score: none
+          rationale: 藏品有 creator／貢獻機構標示但為標準文博詮釋資料，非 TK 風格文化權威標示
+        protocol:
+          score: none
+          rationale: 14 種授權／權利標示均依一般著作權與 CC 體系設計，無傳統存取規範標示
+        permission:
+          score: none
+          rationale: 授權含 NC／ND／僅能瀏覽等限制類型，但依一般著作權邏輯而非文化意義
+      localized:
+        consultation_consent:
+          score: none
+          rationale: 授權體系無相關條款
+        traditional_knowledge_protection:
+          score: none
+          rationale: 無原住民族傳統智慧創作保護條款；即使平台有原住民族主題展覽（如烏來泰雅民族博物館 Ulay‧織男）亦無特別處理
+        rights_respect_clause:
+          score: none
+          rationale: 無原住民族權益尊重條款

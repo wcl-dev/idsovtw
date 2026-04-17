@@ -16,13 +16,14 @@
     "sources": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["cip", "data-gov-tw", "ticd", "ailt", "tcmb"],
+      "required": ["cip", "data-gov-tw", "ticd", "ailt", "tcmb", "openmuseum"],
       "properties": {
         "cip": { "$ref": "#/definitions/sourceAccess" },
         "data-gov-tw": { "$ref": "#/definitions/sourceAccess" },
         "ticd": { "$ref": "#/definitions/sourceAccess" },
         "ailt": { "$ref": "#/definitions/sourceAccess" },
-        "tcmb": { "$ref": "#/definitions/sourceAccess" }
+        "tcmb": { "$ref": "#/definitions/sourceAccess" },
+        "openmuseum": { "$ref": "#/definitions/sourceAccess" }
       }
     }
   },
