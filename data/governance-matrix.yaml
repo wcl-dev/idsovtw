@@ -351,22 +351,32 @@ sources:
         collective_benefit:
           score: none
           rationale: 平台 about 頁訴求「打開典藏權、詮釋權、創作權」，但未以原住民族集體利益為框架；howto 頁明文「平台不擁有藏品智財權」將治理推給貢獻機構
+        # 2026-04-13 發現：平台層級無強制但個別展覽（如《釀在生活中》阿美族釀酒文化）
+        # 有部落頭目核准與族人策展人實踐——基於此個案升為 partial
         authority_to_control:
-          score: none
-          rationale: 無原住民族對資料使用的控制機制；平台作為中研院所屬，內部決策不構成社群控制
+          score: partial
+          rationale: 平台層級無強制規範；但個別原住民族相關展覽的實踐包含部落代表的控制——例如《「釀」在生活中「發酵」在祭儀裡》展覽誌謝明列 Cipawkan 部落頭目陳誠勇、Pukpuk 部落頭目張健山為核心貢獻者，構成部落領袖對內容的諮詢／核准。**此評分基於個別展覽的實踐證據，非平台保障；品質因策展人而異**
+          evidence_refs:
+            - audit-log.md:L325-L362
         responsibility:
-          score: none
-          rationale: 無針對原住民族社群的問責機制；平台明文「不擁有藏品智財權」實質將責任分散至各貢獻機構
+          score: partial
+          rationale: 平台無針對社群的制度化問責機制；但個別展覽透過完整誌謝結構體現公開問責——《「釀」在生活中》展覽將藏品提供者、部落頭目、祭司家族、耆老、NGO 一一列名，可視為個案層級的透明問責。**此評分基於個別展覽的實踐證據，非平台保障；品質因策展人而異**
+          evidence_refs:
+            - audit-log.md:L325-L362
         ethics:
-          score: none
-          rationale: 14 種授權／權利標示均為技術性授權，無文化敏感性處理條款
+          score: partial
+          rationale: 平台的 14 種授權／權利標示均為技術性授權，無明文的文化敏感性處理條款；但個別展覽在實踐上展現文化敏感性——例如《「釀」在生活中》策展人 Lunaw Lubang 施昭憶本身為阿美族 sikawasay（祭司）家族傳承者，以族內承擔者身份處理祭儀知識（祖靈祭 talatu'as、酒麴製作等）。**此評分基於個別展覽的實踐證據，非平台保障；品質因策展人而異**
+          evidence_refs:
+            - audit-log.md:L325-L362
       OCAP:
         ownership:
           score: none
           rationale: 平台明文「並不擁有平台上任何藏品的智慧財產權」；所有權分散於各貢獻機構（77 個主題博物館），絕大多數非原住民族相關機構
         control:
-          score: none
-          rationale: 無社群控制機制；策展平台 plaza.openmuseum.tw 需登入但無任何資料顯示原住民族社群有優先控制管道
+          score: partial
+          rationale: 平台無社群控制機制；策展平台 plaza.openmuseum.tw 需登入但無任何制度性的原住民族優先控制管道。但個別展覽的實踐中有部落頭目之諮商／同意——例如《「釀」在生活中》展覽由 Cipawkan、Pukpuk 兩部落頭目與 sikawasay 長者家族實質參與策展決策。**此評分基於個別展覽的實踐證據，非平台保障；品質因策展人而異**
+          evidence_refs:
+            - audit-log.md:L325-L362
         access:
           score: none
           rationale: 一般瀏覽對所有人開放但無社群優先管道；無族語介面；無部落層級取用工具——符合「普世開放但非社群化」的 none 判準
