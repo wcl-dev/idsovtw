@@ -18,6 +18,8 @@
 
 ### 線上瀏覽
 
+可透過 https://wcl-dev.github.io/idsovtw/
+
 如果你拿到的是已 build 的版本：
 
 1. 解壓縮 zip
