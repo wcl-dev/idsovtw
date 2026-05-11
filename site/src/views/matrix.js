@@ -1,5 +1,5 @@
 // View 3：治理落差矩陣
-// 5 來源 × 14 維度 = 70 格 heatmap，分為 4 框架類別
+// 6 來源 × 14 維度 = 84 格 heatmap，分為 4 框架類別
 // 點選任一 cell 顯示完整 rationale 與 evidence
 
 import { SOURCE_DISPLAY, escapeAndFormat } from "../lib/data.js";
@@ -58,7 +58,7 @@ export function renderMatrix(bundle, root, selectedSource = null) {
     <article class="view-matrix">
       <h2 class="view-title">治理落差矩陣</h2>
       <p class="view-subtitle">
-        5 個資料來源 × 14 個原住民族集體權利治理維度的評估。點擊任一格子查看評分理由與依據。
+        6 個資料來源 × 14 個原住民族集體權利治理維度的評估。點擊任一格子查看評分理由與依據。
       </p>
 
       <p class="view-description">

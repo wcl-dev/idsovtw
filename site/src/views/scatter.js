@@ -252,7 +252,7 @@ function renderDetail(bundle, point, container) {
       落在<strong>理想象限（右上）</strong>。
       可及性 ${point.access_total}/18（${xPct}%）+ 治理回應 ${point.governance_nonNone}/14（${yPct}%），兩軸皆高。
       資料對外部使用者開放，且明確回應原住民族集體權利。
-      <strong>本工具評估的 5 個來源中無一落在此象限</strong>——
+      <strong>本工具評估的 6 個來源中無一落在此象限</strong>——
       此資料源是少數可被視為兼顧開放性與治理性的例外。
     `;
   } else {
@@ -261,7 +261,7 @@ function renderDetail(bundle, point, container) {
       可及性 ${point.access_total}/18（${xPct}%）較低，但治理回應 ${point.governance_nonNone}/14（${yPct}%）較高——
       取用受限且存在實質的社群權利保障機制。
       此模式較接近 OCAP/TK Labels 主張的「社群決定取用範圍」理想。
-      <strong>本工具評估的 5 個來源中無一落在此象限</strong>。
+      <strong>本工具評估的 6 個來源中無一落在此象限</strong>。
     `;
   }
 

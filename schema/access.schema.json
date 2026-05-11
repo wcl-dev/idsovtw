@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://toothless-bite.local/schema/access.schema.json",
   "title": "存取性分層評分矩陣",
-  "description": "5 資料來源 × 6 維度 = 30 個分數（0-3 分）。每分數含 rationale 與 evidence。",
+  "description": "6 資料來源 × 6 維度 = 36 個分數（0-3 分）。每分數含 rationale 與 evidence。",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "date_checked", "methodology_ref", "sources"],

@@ -1,5 +1,5 @@
 // View 1：可及性（內部 ID：spectrum；對應資料 access-tiers.yaml）
-// 5 來源 × 6 維度的 stacked 條狀矩陣；點選展開詳情
+// 6 來源 × 6 維度的 stacked 條狀矩陣；點選展開詳情
 
 import { ACCESS_DIMENSIONS, SOURCE_DISPLAY, escapeAndFormat } from "../lib/data.js";
 
@@ -13,7 +13,7 @@ export function renderSpectrum(bundle, root, selectedSource = null) {
     <article class="view-spectrum">
       <h2 class="view-title">可及性</h2>
       <p class="view-subtitle">
-        5 個資料來源 × 6 個可及性維度的評分。單點格子或整列查看評分依據。
+        6 個資料來源 × 6 個可及性維度的評分。單點格子或整列查看評分依據。
       </p>
 
       <p class="view-description">

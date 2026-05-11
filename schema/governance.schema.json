@@ -2,7 +2,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "https://toothless-bite.local/schema/governance.schema.json",
   "title": "治理落差評估矩陣",
-  "description": "5 資料來源 × 14 治理維度 = 70 格評估。框架分為 CARE (4)、OCAP (4)、TK Labels (3)、在地化 (3)。",
+  "description": "6 資料來源 × 14 治理維度 = 84 格評估。框架分為 CARE (4)、OCAP (4)、TK Labels (3)、在地化 (3)。",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema_version", "date_checked", "methodology_ref", "sources"],

@@ -260,7 +260,7 @@ aggregations 結構：
 | 11 | `https://tcmb.culture.tw/zh-tw/OpenApi`（WebFetch） | **成功**。取得完整 API 規格：端點為 `https://tcmbdata.culture.tw/opendata/openapi`（獨立子域名），GET 方法，JSON 回傳，需 API Key（透過 `Authorization` header），申請需提供固定 IP。Swagger UI 位於 `https://tcmbdata.culture.tw/swagger-ui/`。 |
 
 **結論**：
-- TCMB 是五個來源中**技術架構最現代但也最難以程式化存取**的平台
+- TCMB 在當時的 5 個來源中**技術架構最現代但程式化存取門檻最高**（固定 IP 申請）；後續加入的 openmuseum 完全無公開 API，使得「最難以程式化存取」的位置移至 openmuseum——但 TCMB 仍是「現代化技術 + 高門檻」的代表型態
 - 網站為 SPA（可能是 Nuxt.js 或 Next.js），HTML 回傳幾乎不含內容，所有資料都在客戶端渲染
 - 114 年底改版後大量舊路徑失效（/about, /cc_license, /openapi 等），但新路徑（/OpenApi）未在顯眼位置標示
 - OpenAPI 存在且文件完整，但申請門檻（固定 IP）對個人研究者或非機構使用者構成實質障礙

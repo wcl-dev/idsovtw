@@ -1,5 +1,5 @@
 // View 4：資料單位對應
-// 5 來源 × 5 單位類型表格——揭示「沒有共同骨架」的資料地景
+// 6 來源 × 5 單位類型表格——揭示「沒有共同骨架」的資料地景
 
 import { SOURCE_DISPLAY } from "../lib/data.js";
 
@@ -56,7 +56,7 @@ export function renderUnits(bundle, root, selectedSource = null) {
     <article class="view-units">
       <h2 class="view-title">資料單位對應</h2>
       <p class="view-subtitle">
-        5 個資料來源 × 5 種資料單位類型——揭示跨來源串聯的結構基礎（或缺乏基礎）。
+        6 個資料來源 × 5 種資料單位類型——揭示跨來源串聯的結構基礎（或缺乏基礎）。
       </p>
 
       <p class="view-description">
